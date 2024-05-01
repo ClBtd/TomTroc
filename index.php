@@ -11,13 +11,38 @@ $action = Utils::request('action', 'home');
 try {
     // Pour chaque action, on appelle le bon contrôleur et la bonne méthode.
     switch ($action) {
+
         // Pages accessibles à tous.
+
         case 'home':
             $bookController = new BookController();
             $bookController->showHome();
             break;
+        
+        case 'books' :
+            $bookController = new BookController();
+            $bookController->showBooks();
+            break;
+        
+        case 'connectionForm' :
+            $userController = new UserController();
+            $userController->displayConnectionForm();
+            break; 
 
-            default:
+        // Pages où une connexion est nécessaire.
+
+        case 'messages' :
+            $messageController = new MessageController();
+            $messageController->showMessages();
+            break;  
+            
+        case 'account' :
+            $userController = new UserController();
+            $userController->showAccount();
+            break;
+        
+
+        default:
             throw new Exception("La page demandée n'existe pas.");
     }
 } catch (Exception $e) {

@@ -3,10 +3,10 @@
  class Book extends AbstractEntity 
  {
     private int $id_user;
-    private string $title = "";
-    private string $author = "";
-    private string $cover = "";
-    private string $description = "";
+    private string $title;
+    private string $author;
+    private string $cover;
+    private string $description;
     private ?DateTime $dateCreation = null;
 
     /**
