@@ -16,6 +16,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Inter';
+  src: url('./fonts/inter/Inter-Light.otf') format('opentype');
+  font-weight: light;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Déclaration des couleurs */
 
 :root {
@@ -30,18 +38,18 @@
 body {
   margin: 0;
   color: var(--noir);
+  background-color: var(--gris-clair);
 }
 
 /* Header */
 
 header {
-  background-color: var(--gris-clair);
   display: flex;
   justify-content: space-around;
 }
 
 header a {
-  font-family: 'Inter', Arial;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
   font-size: 0.88em;
   font-style: normal;
   font-weight: normal;
@@ -97,4 +105,26 @@ header img {
   color: var(--gris-clair);
   font-size: 0.5em;
   font-weight: 700;
+}
+
+/* Footer */
+
+footer {
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: light;
+  font-size: 0.75em;
+}
+
+footer img {
+  width : 22px;
+  height: 17px;
+  padding: 20px;
+}
+
+footer p {
+  padding: 20px;
 }

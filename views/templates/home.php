@@ -13,7 +13,7 @@
      */
 ?>
 <?php foreach ($books as $book) : ?>
-    <img src="img/<?=$book->getCover()?>" alt="Couverture de <?=$book->getTitle()?>">
+    <img src="img/covers/<?=$book->getCover()?>" alt="Couverture de <?=$book->getTitle()?>">
     <h3><?=$book->getTitle()?></h3>
     <h4><?=$book->getAuthor()?></h4>
 <?php endforeach; ?>

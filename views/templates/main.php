@@ -21,7 +21,7 @@ $messages_number = 3;
 <body>
     <header>
         <div class='mainNav'>
-            <img src="img/logo.png" alt="Logo de TomTroc">
+            <img src="img/logo-titre.png" alt="Logo de TomTroc">
             <nav>
                 <a href="index.php?action=home" class="<?php echo (empty($_GET['action']) || $_GET['action'] === 'home') ? 'focus' : ''; ?>">Accueil</a>
                 <a href="index.php?action=books" class="<?php echo Utils::focus($_GET['action'] ?? '', 'books'); ?>">Nos livres à l'échange</a>
@@ -57,9 +57,10 @@ $messages_number = 3;
     </main>
     
     <footer>
-        <a href="#">Politique de confidentialité</a>
+        <p>Politique de confidentialité</p>
         <p>Mentions légales</p> 
         <p>TomTroc©</p>
+        <img src="img/logo-simple.png" alt="Logo de TomTroc">
     </footer>
 
 </body>
