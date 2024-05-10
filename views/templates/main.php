@@ -6,8 +6,9 @@
  *      $title string : le titre de la page.
  *      $content string : le contenu de la page. 
  */
-
+$messages_number = 3;
 ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -22,19 +23,19 @@
         <div class='mainNav'>
             <img src="img/logo.png" alt="Logo de TomTroc">
             <nav>
-                <a href="index.php?action=home">Accueil</a>
-                <a href="index.php?action=books">Nos livres à l'échange</a>
+                <a href="index.php?action=home" class="<?php echo (empty($_GET['action']) || $_GET['action'] === 'home') ? 'focus' : ''; ?>">Accueil</a>
+                <a href="index.php?action=books" class="<?php echo Utils::focus($_GET['action'] ?? '', 'books'); ?>">Nos livres à l'échange</a>
             </nav>
         </div>
         <nav class='secondaryNav'>
-            <a href="index.php?action=messages">
+            <a href="index.php?action=messages" class="<?php echo Utils::focus($_GET['action'] ?? '', 'messages'); ?>">
                 <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5342 10.8594L12.3182 11.0439L12.4441 11.2822V12.7332L11.1804 12.0036L11.0119 11.8558L10.8037 11.9494C9.81713 12.3931 8.6938 12.645 7.5 12.645C3.50458 12.645 0.355 9.84779 0.355 6.5C0.355 3.15221 3.50458 0.355 7.5 0.355C11.4954 0.355 14.645 3.15221 14.645 6.5C14.645 8.19467 13.8458 9.73885 12.5342 10.8594ZM11.1765 12.0014C11.1765 12.0014 11.1766 12.0014 11.1766 12.0014L11.1765 12.0014L11.1765 12.0014Z" stroke="#292929" stroke-width="0.71"/>
                 </svg>
-                <h3>Messagerie</h3>
-                <p>1</p>
+                Messagerie
+                <span><?=$messages_number?></span>
             </a>
-            <a href="index.php?action=account">
+            <a href="index.php?action=account" class="<?php echo Utils::focus($_GET['action'] ?? '', 'account'); ?>">
                 <svg width="11" height="13" viewBox="0 0 11 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <mask id="path-1-inside-1_227_966" fill="white">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M5.42801 9.28571C7.99219 9.28571 10.0709 7.20704 10.0709 4.64286C10.0709 2.07868 7.99219 0 5.42801 0C2.86383 0 0.785156 2.07868 0.785156 4.64286C0.785156 7.20704 2.86383 9.28571 5.42801 9.28571ZM5.42801 9.28571C2.86383 9.28571 0.785156 10.1172 0.785156 11.1429C0.785156 12.1685 2.86383 13 5.42801 13C7.99219 13 10.0709 12.1685 10.0709 11.1429C10.0709 10.1172 7.99219 9.28571 5.42801 9.28571Z"/>
@@ -43,7 +44,11 @@
                 </svg>
                 Mon Compte
             </a>
-            <a href="index.php?action=connectionForm">Connexion</a>
+            <?php if (isset($_SESSION['user'])) : ?>
+                <a href="index.php?action=disconnectUser">Déconnexion</a>
+            <?php else : ?> 
+                <a href="index.php?action=connectionForm" class="<?php echo Utils::focus($_GET['action'] ?? '', 'connectionForm'); ?>">Connexion</a>
+            <?php endif; ?>
         </nav> 
     </header>
 

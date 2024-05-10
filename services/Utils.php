@@ -62,4 +62,9 @@ class Utils {
         }
     }
 
+    public static function focus(string $page, $action = '') 
+    {
+        return $page === $action ? 'focus' : '';
+    }
+
 }
