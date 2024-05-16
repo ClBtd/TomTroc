@@ -11,7 +11,13 @@ class BookManager extends AbstractEntityManager
      */
     public function getNewBooks() : array
     {
-        $sql = "SELECT * FROM Books WHERE disponibility = 1 ORDER BY id DESC LIMIT 4";
+        $sql = "SELECT Books.*, Users.username AS username
+        FROM Books
+        JOIN Users ON Books.user_id = Users.id
+        WHERE Books.disponibility = 1
+        ORDER BY Books.id DESC
+        LIMIT 4";
+
         $result = $this->db->query($sql);
         $books = [];
 

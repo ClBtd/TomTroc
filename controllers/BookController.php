@@ -23,4 +23,13 @@ class BookController
         $view = new View("Nos livres à l'échange");
         $view->render("books");
     }
+
+    public function showBookDetail() : void
+    {
+        //$bookManager = new BookManager();
+        //$books = $bookManager->getBookByID();     
+
+        $view = new View("Titre du livre");
+        $view->render("bookDetail");
+    }
 }

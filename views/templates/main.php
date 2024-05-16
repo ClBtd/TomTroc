@@ -16,12 +16,16 @@ $messages_number = 3;
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TomTroc</title>
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
         <div class='mainNav'>
-            <img src="img/logo-titre.png" alt="Logo de TomTroc">
+            <img src="img/logo-title.png" alt="Logo de TomTroc">
             <nav>
                 <a href="index.php?action=home" class="<?php echo (empty($_GET['action']) || $_GET['action'] === 'home') ? 'focus' : ''; ?>">Accueil</a>
                 <a href="index.php?action=books" class="<?php echo Utils::focus($_GET['action'] ?? '', 'books'); ?>">Nos livres à l'échange</a>
