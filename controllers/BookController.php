@@ -24,6 +24,17 @@ class BookController
         $view->render("books",['books' => $books]);
     }
 
+    public function searchBooks() : void
+    {
+        $searchedBooks = htmlspecialchars($_GET['title']);
+
+        $bookManager = new BookManager();
+        $books = $bookManager->getSearchedBooks($searchedBooks);     
+
+        $view = new View("Nos livres à l'échange");
+        $view->render("books",['books' => $books]);   
+    }
+
     public function showBookDetail() : void
     {
         //$bookManager = new BookManager();
