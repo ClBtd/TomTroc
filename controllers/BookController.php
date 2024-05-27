@@ -9,19 +9,19 @@ class BookController
     public function showHome() : void
     {
         $bookManager = new BookManager();
-        $books = $bookManager->getNewBooks();     
+        $newBooks = $bookManager->getNewBooks();     
 
         $view = new View("Accueil");
-        $view->render("home",['books' => $books]);
+        $view->render("home",['newBooks' => $newBooks]);
     }
 
     public function showBooks() : void
     {
         $bookManager = new BookManager();
-        $books = $bookManager->getNewBooks();     
+        $books = $bookManager->getAllBooks();     
 
         $view = new View("Nos livres à l'échange");
-        $view->render("books");
+        $view->render("books",['books' => $books]);
     }
 
     public function showBookDetail() : void

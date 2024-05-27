@@ -1,6 +1,6 @@
 <?php
     /**
-     * Présentation. 
+     * Présentation du site. 
      */
 ?>
 
@@ -16,27 +16,34 @@
     </figure>
 </div>
 
+<?php
+    /**
+    * Affichage des 4 derniers livres ajoutés disponibles à l'échange. 
+    */
+?>
+
 <div class="last-books">
     <h3>Les derniers livres ajoutés</h3>
     <div class="show-books">
-        <?php
-            /**
-             * Affichage des 4 derniers livres ajoutés disponibles à l'échange. 
-             */
-        ?>
-        <?php foreach ($books as $book) : ?>
+        <?php foreach ($newBooks as $newBook) : ?>
             <div class="book-card">
-                <img src="img/covers/<?=$book->getCover()?>" alt="Couverture de <?=$book->getTitle()?>">
+                <img src="img/covers/<?=$newBook->getCover()?>" alt="Couverture de <?=$newBook->getTitle()?>">
                 <div class="text-card">
-                    <h4><?=$book->getTitle()?></h3>
-                    <h5><?=$book->getAuthor()?></h4>
-                    <p>Vendu par : <?=$book->getUsername()?></p>
+                    <h4><?=$newBook->getTitle()?></h3>
+                    <h5><?=$newBook->getAuthor()?></h4>
+                    <p>Vendu par : <?=$newBook->getUsername()?></p>
                 </div>
             </div>
         <?php endforeach; ?>
     </div>
     <a href="index?action=books" class="link-button">Voir tous les livres</a>
 </div>
+
+<?php
+    /**
+     * Description du fonctionnement du site. 
+     */
+?>
 
 <div class="description">
     <h3>Comment ça marche</h3>
@@ -53,6 +60,12 @@
 <div class="banner">
     <img src="img/library.png" alt="Image d'une bibliothèque">
 </div>
+
+<?php
+    /**
+     * Présentation des valeurs de l'équipe. 
+     */
+?>
 
 <div class="values">
     <h3>Nos valeurs</h3>

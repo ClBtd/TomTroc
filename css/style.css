@@ -104,8 +104,13 @@ footer p {
   padding: 20px;
 }
 
+/* Titles */
 
-/* Home */
+h2 {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+  font-size: 2.25em;
+  font-weight: 400;
+}
 
 h3 {
   font-family: 'Playfair Display', 'Times New Roman', Times, serif;
@@ -113,6 +118,53 @@ h3 {
   font-weight: 400;
 }
 
+/* Books presentation */
+
+.show-books {
+  display: flex;
+  justify-content: center;
+}
+
+.book-card {
+  margin: 0 20px;
+  background-color: var(--blanc);
+  border-radius: 0 0 5px 5px;
+}
+
+.book-card img {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  justify-content: center;
+}
+
+.text-card {
+  width: 172px;
+  height: 84px;
+  padding: 20px 14px;
+}
+
+.text-card h4 {
+  font-size: 1em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.text-card h5 {
+  font-size: 0.87em;
+  font-weight: 400;
+  color: var(--gris-texte);
+  margin: 8px 0 22px 0;
+}
+
+.text-card p {
+  font-size: 0.62em;
+  font-style: italic;
+  color: var(--gris-texte);
+  margin:0;
+}
+
+/* Home */
 
 .presentation {
   display: flex;
@@ -121,9 +173,6 @@ h3 {
 }
 
 .presentation h2 {
-  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
-  font-size: 2.25em;
-  font-weight: 400;
   margin: 0 0 16px 0;
 }
 
@@ -169,50 +218,6 @@ h3 {
 .last-books h3 {
   padding: 80px 0;
   margin: 0px;
-}
-
-.show-books {
-  display: flex;
-  justify-content: center;
-}
-
-.book-card {
-  margin: 0 20px;
-  background-color: var(--blanc);
-  border-radius: 0 0 5px 5px;
-}
-
-.book-card img {
-  width: 200px;
-  height: 200px;
-  object-fit: cover;
-  justify-content: center;
-}
-
-.text-card {
-  width: 172px;
-  height: 84px;
-  padding: 20px 14px;
-}
-
-.text-card h4 {
-  font-size: 1em;
-  font-weight: 400;
-  margin: 0;
-}
-
-.text-card h5 {
-  font-size: 0.87em;
-  font-weight: 400;
-  color: var(--gris-texte);
-  margin: 8px 0 22px 0;
-}
-
-.text-card p {
-  font-size: 0.62em;
-  font-style: italic;
-  color: var(--gris-texte);
-  margin:0;
 }
 
 .last-books .link-button {
@@ -286,4 +291,39 @@ h3 {
   font-size: 0.75em;
   font-style: italic;
   padding-top: 14px;
+}
+
+/* Book page */
+
+.book-page {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 130px 263px 72px 263px;
+  background-color: var(--beige);
+}
+
+.searchfield {
+  width: 277px;
+  height: 45px;
+  border: 1px solid var(--gris-clair);
+  border-radius: 6px;
+  background: url(../img/glass.png) no-repeat scroll 16px 15px;
+  background-color: var(--blanc);
+  padding-left:45px;
+  color: var(--gris-texte);
+  font-size: 0.875em;
+}
+
+.show-books {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 0 246px;
+  background-color: var(--beige);
+}
+
+.show-books .book-card {
+  margin: 0 17px 48px 17px;
 }
