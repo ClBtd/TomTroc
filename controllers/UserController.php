@@ -2,6 +2,17 @@
 
 class UserController {
 
+
+    private $userManager;
+    /**
+     * Définition du constructeur
+     * @return UserManager
+     */
+    public function __construct(UserManager $userManager)
+    {
+        $this->userManager = $userManager;
+    }
+
     /**
      * Affiche la page d'administration.
      * @return void

@@ -9,45 +9,43 @@ $action = Utils::request('action', 'home');
 
 // Try catch global pour gérer les erreurs
 try {
+
+    $bookController = new BookController(new BookManager());
+    $userController = new UserController(new UserManager());
+    $messageController = new MessageController(new MessageManager());
+
     // Pour chaque action, on appelle le bon contrôleur et la bonne méthode.
     switch ($action) {
 
         // Pages accessibles à tous.
 
         case 'home':
-            $bookController = new BookController();
             $bookController->showHome();
             break;
         
         case 'books' :
-            $bookController = new BookController();
             $bookController->showBooks();
             break;
         
         case 'search' :
-            $bookController = new BookController();
             $bookController->searchBooks();
             break;
         
         case 'bookDetail':
-            $bookController = new BookController();
             $bookController->showBookDetail();
             break;
         
         case 'connectionForm' :
-            $userController = new UserController();
             $userController->displayConnectionForm();
             break; 
 
         // Pages où une connexion est nécessaire.
 
         case 'messages' :
-            $messageController = new MessageController();
             $messageController->showMessages();
             break;  
             
         case 'account' :
-            $userController = new UserController();
             $userController->showAccount();
             break;
         

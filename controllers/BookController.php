@@ -2,14 +2,24 @@
 
 class BookController 
 {
+    private $bookManager;
+
+    /**
+     * Définition du constructeur
+     * @return BookManager
+     */
+    public function __construct(BookManager $bookManager)
+    {
+        $this->bookManager = $bookManager;
+    }
+
     /**
      * Affiche la page d'accueil.
      * @return void
      */
     public function showHome() : void
     {
-        $bookManager = new BookManager();
-        $newBooks = $bookManager->getNewBooks();     
+        $newBooks = $this->bookManager->getNewBooks();     
 
         $view = new View("Accueil");
         $view->render("home",['newBooks' => $newBooks]);
@@ -17,8 +27,7 @@ class BookController
 
     public function showBooks() : void
     {
-        $bookManager = new BookManager();
-        $books = $bookManager->getAllBooks();     
+        $books = $this->bookManager->getAllBooks();     
 
         $view = new View("Nos livres à l'échange");
         $view->render("books",['books' => $books]);
@@ -28,8 +37,7 @@ class BookController
     {
         $searchedBooks = htmlspecialchars($_GET['title']);
 
-        $bookManager = new BookManager();
-        $books = $bookManager->getSearchedBooks($searchedBooks);     
+        $books = $this->bookManager->getSearchedBooks($searchedBooks);     
 
         $view = new View("Nos livres à l'échange");
         $view->render("books",['books' => $books]);   
@@ -39,8 +47,7 @@ class BookController
     {
         $bookId = htmlspecialchars($_GET['bookId']);
 
-        $bookManager = new BookManager();
-        $book = $bookManager->getBookById($bookId);     
+        $book = $this->bookManager->getBookById($bookId);     
 
         $view = new View("Titre du livre");
         $view->render("bookDetail", ['book' => $book]);

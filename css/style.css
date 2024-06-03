@@ -295,6 +295,7 @@ h3 {
   background-color: var(--white);
   border-radius: 10px;
   font-size: 0.87em;
+  text-align: center;
   padding: 0 18px;
   margin : 40px 18px 48px 18px;
 }
@@ -379,7 +380,7 @@ h3 {
 
 .book-detail {
   display: flex;
-  height: 800px;
+  max-height: 850px;
 }
 
 .book-detail img {
@@ -454,7 +455,8 @@ h3 {
 .infos a {
   position: relative;
   top: 80px;
-  margin: 0 150px 80px 85px;
+  bottom: 80px;
+  margin: 0 150px 0 85px;
   font-size: 1em;
   font-weight: 600;
   color: var(--white);

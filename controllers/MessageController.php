@@ -6,6 +6,16 @@
  
 class MessageController {
 
+    private $messageManager;
+    /**
+     * Définition du constructeur
+     * @return MessageManager
+     */
+    public function __construct(MessageManager $messageManager)
+    {
+        $this->messageManager = $messageManager;
+    }
+
     /**
      * Affiche la page d'administration.
      * @return void
