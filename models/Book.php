@@ -2,6 +2,7 @@
 
  class Book extends AbstractEntity 
  {
+    protected int $id;
     private int $id_user;
     private int $disponibility;
     private string $username;
@@ -9,13 +10,32 @@
     private string $author;
     private string $cover;
     private string $description;
-    private ?DateTime $dateCreation = null;
+    private string $user_picture;
+
+
+    /**
+     * Setter pour l'id du livre. 
+     * @param int $id
+     */
+    public function setId(int $id) : void 
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Getter pour l'id du livre.
+     * @return int
+     */
+    public function getId() : int 
+    {
+        return $this->id;
+    }
 
     /**
      * Setter pour l'id de l'utilisateur. 
      * @param int $id_user
      */
-    public function setIdUser(int $id_user) : void 
+    public function setUserId(int $id_user) : void 
     {
         $this->id_user = $id_user;
     }
@@ -24,7 +44,7 @@
      * Getter pour l'id de l'utilisateur.
      * @return int
      */
-    public function getIdUser() : int 
+    public function getUserId() : int 
     {
         return $this->id_user;
     }
@@ -138,27 +158,21 @@
     }
 
     /**
-     * Setter pour la date de création. Si la date est une string, on la convertit en DateTime.
-     * @param string|DateTime $dateCreation
-     * @param string $format : le format pour la convertion de la date si elle est une string.
-     * Par défaut, c'est le format de date mysql qui est utilisé. 
+     * Setter pour l'image de l'utilisateur.
+     * @param string $user_picture
      */
-    public function setDateCreation(string|DateTime $dateCreation, string $format = 'Y-m-d H:i:s') : void 
+    public function setUserPicture(string $user_picture) : void 
     {
-        if (is_string($dateCreation)) {
-            $dateCreation = DateTime::createFromFormat($format, $dateCreation);
-        }
-        $this->dateCreation = $dateCreation;
+        $this->user_picture = $user_picture;
     }
 
-    /**
-     * Getter pour la date de création.
-     * Grâce au setter, on a la garantie de récupérer un objet DateTime.
-     * @return DateTime
+     /**
+     * Getter pour l'image de l'utilisateur.
+     * @return string
      */
-    public function getDateCreation() : DateTime 
+    public function getUserPicture() : string 
     {
-        return $this->dateCreation;
+        return $this->user_picture;
     }
 
  }

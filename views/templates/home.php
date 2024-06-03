@@ -26,17 +26,19 @@
     <h3>Les derniers livres ajoutés</h3>
     <div class="show-books">
         <?php foreach ($newBooks as $newBook) : ?>
-            <div class="book-card">
-                <img src="img/covers/<?=$newBook->getCover()?>" alt="Couverture de <?=$newBook->getTitle()?>">
-                <div class="text-card">
-                    <h4><?=$newBook->getTitle()?></h3>
-                    <h5><?=$newBook->getAuthor()?></h4>
-                    <p>Vendu par : <?=$newBook->getUsername()?></p>
+            <a href="index.php?action=bookDetail&bookId=<?=$newBook->getId()?>">
+                <div class="book-card">
+                    <img src="img/covers/<?=$newBook->getCover()?>" alt="Couverture de <?=$newBook->getTitle()?>">
+                    <div class="text-card">
+                        <h4><?=$newBook->getTitle()?></h3>
+                        <h5><?=$newBook->getAuthor()?></h4>
+                        <p>Vendu par : <?=$newBook->getUsername()?></p>
+                    </div>
                 </div>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
-    <a href="index?action=books" class="link-button">Voir tous les livres</a>
+    <a href="index.php?action=books" class="link-button">Voir tous les livres</a>
 </div>
 
 <?php

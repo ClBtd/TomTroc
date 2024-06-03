@@ -37,10 +37,12 @@ class BookController
 
     public function showBookDetail() : void
     {
-        //$bookManager = new BookManager();
-        //$books = $bookManager->getBookByID();     
+        $bookId = htmlspecialchars($_GET['bookId']);
+
+        $bookManager = new BookManager();
+        $book = $bookManager->getBookById($bookId);     
 
         $view = new View("Titre du livre");
-        $view->render("bookDetail");
+        $view->render("bookDetail", ['book' => $book]);
     }
 }

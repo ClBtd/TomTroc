@@ -9,7 +9,7 @@ class UserController {
     public function showAccount() : void
     {
         // On vérifie que l'utilisateur est connecté.
-        //Utils::checkIfUserIsConnected();
+        Utils::checkIfUserIsConnected();
 
         // On récupère les articles.
         //$articleManager = new ArticleManager();

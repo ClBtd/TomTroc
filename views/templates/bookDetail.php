@@ -1,1 +1,20 @@
-Page de détail d'un livre
+<div class="breadcrumb">
+    <p>Nos livres > <?= $book->getTitle()?></p>
+</div>
+
+<div class="book-detail">
+    <img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>">
+    <div class="infos">
+        <h2><?=$book->getTitle()?></h2>
+        <h4>par <?=$book->getAuthor()?></h4>
+        <p id="line"></p>
+        <h5>DESCRIPTION</h5>
+        <p class="description"><?=$book->getDescription()?></p>
+        <h5>PROPRIETAIRE</h5>
+        <div class="owner">
+            <img src="img/users/<?=$book->getUserPicture()?>" alt="Image de profil de <?=$book->getUsername()?>">
+            <p><?=$book->getUsername()?></p>
+        </div>
+        <a href="index.php?action=sendMessage&userId=<?=$book->getUserId()?>">Envoyer un message</a>
+    </div>
+</div>
