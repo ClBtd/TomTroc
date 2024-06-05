@@ -37,7 +37,11 @@ try {
         
         case 'connectionForm' :
             $userController->displayConnectionForm();
-            break; 
+            break;
+        
+        case 'inscriptionForm' :
+            $userController->displayInscriptionForm();
+            break;
 
         // Pages où une connexion est nécessaire.
 

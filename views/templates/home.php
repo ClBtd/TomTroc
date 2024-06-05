@@ -60,7 +60,7 @@
 </div>
 
 <div class="banner">
-    <img src="img/library.png" alt="Image d'une bibliothèque">
+    <img src="img/library1.png" alt="Image d'une bibliothèque">
 </div>
 
 <?php
