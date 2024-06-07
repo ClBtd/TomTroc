@@ -6,7 +6,7 @@
 class User extends AbstractEntity 
 {
     private string $login;
-    private string $mail;
+    private string $email;
     private string $password;
 
     /**
@@ -31,18 +31,18 @@ class User extends AbstractEntity
      * Setter pour l'email.
      * @param string $mail
      */
-    public function setMail(string $mail) : void 
+    public function setEmail(string $email) : void 
     {
-        $this->mail = $mail;
+        $this->email = $email;
     }
 
     /**
      * Getter pour l'email.
      * @return string
      */
-    public function getMail() : string 
+    public function getEmail() : string 
     {
-        return $this->mail;
+        return $this->email;
     }
 
     /**

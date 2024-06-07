@@ -45,6 +45,18 @@ try {
 
         // Pages où une connexion est nécessaire.
 
+        case 'connectUser' : 
+            $userController->connectUser();
+            break;
+
+        case 'disconnectUser':
+            $userController->disconnectUser();
+            break;
+
+        case 'recordUser' :
+            $userController->recordUser();
+            break;
+        
         case 'messages' :
             $messageController->showMessages();
             break;  
@@ -52,7 +64,6 @@ try {
         case 'account' :
             $userController->showAccount();
             break;
-        
 
         default:
             throw new Exception("La page demandée n'existe pas.");

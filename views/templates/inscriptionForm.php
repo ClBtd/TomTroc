@@ -2,9 +2,9 @@
     <div class="connectionForm">
         <h2>Inscription</h2>
         <form action="index.php?action=recordUser" method="post">
-            <label for="pseudo">Pseudo</label>
+            <label for="login">Pseudo</label>
             <br>
-            <input type="text" name="pseudo" id="pseudo">
+            <input type="text" name="login" id="login">
             <br>
             <label for="email">Adresse email</label>
             <br>
@@ -14,7 +14,7 @@
             <br>
             <input type="password" name="password" id="password">
             <br>
-            <button type="">S'inscrire'</button>            
+            <button type="">S'inscrire</button>            
         </form>
         <p>
             Déjà inscrit ?
