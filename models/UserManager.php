@@ -55,4 +55,20 @@ class UserManager extends AbstractEntityManager
         $result = $this->db->query($sql, $params);
         return $result->rowCount() > 0;
     }
+
+    /**
+     * Récupérer les infos d'un utilisateur.
+     * @param string $email $password
+     * @return User
+     */
+    public function getUserInfos(string $email) : ?User 
+    {
+        $sql = "SELECT * FROM Users WHERE email = :email";
+        $result = $this->db->query($sql, ['email' => $email]);
+        $user = $result->fetch();
+        if ($user) {
+            return $userInfos = new User($user);
+        }
+        return null;
+    }
 }

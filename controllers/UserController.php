@@ -19,16 +19,24 @@ class UserController {
      */
     public function showAccount() : void
     {
-        // On vérifie que l'utilisateur est connecté.
+        // On vérifie que l'utilisateur est connecté et on récupère son mail.
         Utils::checkIfUserIsConnected();
+        $email = $_SESSION['userEmail'];
 
-        // On récupère les articles.
-        //$articleManager = new ArticleManager();
-        //$articles = $articleManager->getAllArticles();
+        // On récupère les informations de l'utilisateur et ses livres.
+        $userInfos = $this->userManager->getUserInfos($email);
+        if (!$userInfos) {
+            throw new Exception("Un problème est survenu lors de l'accès aux informations du compte.");
+        }
 
-        // On affiche la page d'administration.
+        //On récupère les livres de l'utilisateur.
+        $userBooks = new BookManager;
+        $userBooks = $userBooks->getBooksByUser($email);
+
+        // On affiche la page utilisateur.
         $view = new View("Mon compte");
-        $view->render("account");
+        $view->render("account", ['userInfos' => $userInfos,
+        'userBooks' => $userBooks]);
     }
 
     /**
@@ -79,7 +87,7 @@ class UserController {
 
         // On connecte l'utilisateur.
         $_SESSION['user'] = $user;
-        $_SESSION['idUser'] = $user->getId();
+        $_SESSION['userEmail'] = $user->getEmail();
 
         // On redirige vers la page du compte de l'utilisateur..
         Utils::redirect("account");

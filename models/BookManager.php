@@ -56,10 +56,10 @@ class BookManager extends AbstractEntityManager
         $sql = "SELECT Books.*, Users.username AS username
         FROM Books
         JOIN Users ON Books.user_id = Users.id
-        WHERE Books.title LIKE '%$searchedBooks%'
+        WHERE Books.title LIKE :search
         ORDER BY Books.id DESC";
 
-        $result = $this->db->query($sql);
+        $result = $this->db->query($sql, ['search' => "%$searchedBooks%"]);
         $books = [];
 
         while ($book = $result->fetch()) {
@@ -86,4 +86,26 @@ class BookManager extends AbstractEntityManager
         }
         return null;
     }
+
+    /**
+     * Récupère le ou les livres d'un utilisateur.
+     * @return array : un tableau d'objets Book.
+     */
+    public function getBooksByUser(string $email) : array
+    {
+        $sql = "SELECT Books.*, Users.email AS email
+        FROM Books
+        JOIN Users ON Books.user_id = Users.id
+        WHERE Users.email = :email
+        ORDER BY Books.id DESC";
+
+        $result = $this->db->query($sql, ['email' => $email]);
+        $books = [];
+
+        while ($book = $result->fetch()) {
+            $books[] = new Book($book);
+        }
+        return $books;
+    }
+
 }

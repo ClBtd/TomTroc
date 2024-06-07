@@ -8,6 +8,8 @@ class User extends AbstractEntity
     private string $login;
     private string $email;
     private string $password;
+    private string $picture;
+    private array $books;
 
     /**
      * Setter pour le login.
@@ -61,5 +63,41 @@ class User extends AbstractEntity
     public function getPassword() : string 
     {
         return $this->password;
+    }
+
+    /**
+     * Setter pour l'image de profil.
+     * @param string $picture
+     */
+    public function setPicture(string $picture) : void 
+    {
+        $this->picture = $picture;
+    }
+
+    /**
+     * Getter pour l'image de profil.
+     * @return string
+     */
+    public function getPicture() : string 
+    {
+        return $this->picture;
+    }
+
+    /**
+     * Setter pour le tableau de livres.
+     * @param array $books
+     */
+    public function setBooks(array $books) : void 
+    {
+        $this->books = $books;
+    }
+
+    /**
+     * Getter pour le tableau de livres.
+     * @return array
+     */
+    public function getBooks() : array 
+    {
+        return $this->books;
     }
 }
