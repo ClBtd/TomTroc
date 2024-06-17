@@ -21,7 +21,7 @@
                     <div class="text-card">
                         <h4><?=$book->getTitle()?></h3>
                         <h5><?=$book->getAuthor()?></h4>
-                        <p>Vendu par : <?=$book->getUsername()?></p>
+                        <p>Vendu par : <?=$book->getLogin()?></p>
                     </div>
                 </div>
             </a>

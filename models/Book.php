@@ -5,7 +5,7 @@
     protected int $id;
     private int $id_user;
     private int $disponibility;
-    private string $username;
+    private string $login;
     private string $title;
     private string $author;
     private string $cover;
@@ -69,20 +69,20 @@
 
     /**
      * Setter pour le nom de l'utilisateur. 
-     * @param string $id_user
+     * @param string $login
      */
-    public function setUsername(string $username) : void 
+    public function setLogin(string $login) : void 
     {
-        $this->username = $username;
+        $this->login = $login;
     }
 
     /**
      * Getter pour le nom l'utilisateur.
      * @return string
      */
-    public function getUsername() : string 
+    public function getLogin() : string 
     {
-        return $this->username;
+        return $this->login;
     }
 
     /**

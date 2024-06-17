@@ -5,11 +5,30 @@
  */ 
 class User extends AbstractEntity 
 {
+    protected int $id;
     private string $login;
     private string $email;
     private string $password;
-    private string $picture;
-    private array $books;
+    private ?string $picture;
+    private DateTime $inscription;
+
+    /**
+     * Setter pour l'id.
+     * @param int $id
+     */
+    public function setId(int $id) : void 
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * Getter pour l'id.
+     * @return int
+     */
+    public function getId() : int 
+    {
+        return $this->id;
+    }
 
     /**
      * Setter pour le login.
@@ -69,35 +88,41 @@ class User extends AbstractEntity
      * Setter pour l'image de profil.
      * @param string $picture
      */
-    public function setPicture(string $picture) : void 
+    public function setPicture(?string $picture) : void 
     {
-        $this->picture = $picture;
+        if ($picture !== NULL) {
+            $this->picture = $picture;
+        }
+        else {
+            $this->picture = '';
+        }
     }
 
     /**
      * Getter pour l'image de profil.
      * @return string
      */
-    public function getPicture() : string 
+    public function getPicture() : ?string 
     {
         return $this->picture;
     }
 
     /**
-     * Setter pour le tableau de livres.
-     * @param array $books
+     * Setter pour la date d'inscription.
+     * @param string $inscription
      */
-    public function setBooks(array $books) : void 
+    public function setInscription(string $inscription) : void 
     {
-        $this->books = $books;
+        $this->inscription = new DateTime($inscription);
     }
 
     /**
-     * Getter pour le tableau de livres.
-     * @return array
+     * Getter pour la date d'inscription.
+     * @return DateTime
      */
-    public function getBooks() : array 
+    public function getInscription() : DateTime 
     {
-        return $this->books;
+        return $this->inscription;
     }
+
 }

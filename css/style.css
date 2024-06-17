@@ -8,6 +8,7 @@
     --white: #FFFFFF;
     --beige: #FAF9F7;
     --brown : #C56D6D;
+    --light-grey : #EDF2F6;
   }
 
 /* Body */
@@ -411,7 +412,7 @@ h3 {
   font-weight: 400;
 }
 
-#line {
+#line1 {
   margin: 0 0 0 85px;
   padding: 0;
   width: 27px;
@@ -519,6 +520,135 @@ h3 {
   width: 50%;
 }
 
+/*Page utilisateur*/
+
+.userPage {
+  background-color: var(--beige);
+  padding: 170px 155px 100px 150px;
+}
+
+.userPage h3 {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+  font-size: 1.62em;
+  font-weight: 400;
+  margin: 0 0 48px 0;
+}
+
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userInfos {
+  background-color: var(--white);
+  border-radius: 20px;
+  text-align: center;
+}
+
+.userInfos img {
+  height: 135px;
+  border-radius: 135px;
+  object-fit: cover;
+  margin: 48px 205px 0 205px;
+}
+
+#noPicture {
+  background-color: var(--clear-grey);
+  height: 135px;
+  width: 135px;
+  border-radius: 135px;
+  margin: 48px 205px 0 205px;
+}
+
+.userInfos a {
+  font-size: 0.87em;
+  color: var(--grey-text);
+}
+
+#line2 {
+  margin: 48px 0 48px 157px;
+  padding: 0;
+  width: 242px;
+  height: 0;
+  border-top: 1px solid var(--clear-grey);
+}
+
+.userInfos h4 {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.userInfos p {
+  font-size: 0.87em;
+  color: var(--grey-text);
+  margin: 11px 0 21px 0;
+}
+
+.userInfos h5 {
+  margin: 0;
+  font-size: 0.5em;
+  font-weight: 600;
+}
+
+.library {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 6px 0 93px 0;
+}
+
+.library p {
+  margin: 0 0 0 5px;
+  color: var(--black);
+}
+
+.userInfos h3 {
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 1em;
+  font-weight: 400;
+  margin: 36px 0 26px 116px;
+  text-align: left;
+}
+
+.userInfos form {
+  text-align: justify;
+  margin: 0 116px;
+}
+
+.userInfos label {
+  font-size: 0.87em;
+  color: var(--grey-text);
+}
+
+.userInfos input {
+  width: 322px;
+  height: 50px;
+  background-color: var(--light-grey);
+  border: 1px solid #F0F0F0;
+  border-radius: 6px;
+  padding: 0 14px;
+  margin: 10px 0 32px 0;
+  color: var(--black);
+  font-size: 0.87em;
+}
+
+.userInfos value {
+  color: var(--black);
+  font-size: 0.87em;
+}
+
+.userInfos button {
+  background-color: var(--clear-grey);
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--green);
+  text-decoration: none;
+  padding: 22px 38px;
+  border: 1px solid var(--green);
+  border-radius: 10px;
+}
 
 /* Page d'erreur */
 

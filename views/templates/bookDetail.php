@@ -7,13 +7,13 @@
     <div class="infos">
         <h2><?=$book->getTitle()?></h2>
         <h4>par <?=$book->getAuthor()?></h4>
-        <p id="line"></p>
+        <p id="line1"></p>
         <h5>DESCRIPTION</h5>
         <p class="description"><?=$book->getDescription()?></p>
         <h5>PROPRIETAIRE</h5>
         <div class="owner">
-            <img src="img/users/<?=$book->getUserPicture()?>" alt="Image de profil de <?=$book->getUsername()?>">
-            <p><?=$book->getUsername()?></p>
+            <img src="img/users/<?=$book->getUserPicture()?>" alt="Image de profil de <?=$book->getLogin()?>">
+            <p><?=$book->getLogin()?></p>
         </div>
         <a href="index.php?action=sendMessage&userId=<?=$book->getUserId()?>">Envoyer un message</a>
     </div>

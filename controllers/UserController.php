@@ -146,12 +146,44 @@ class UserController {
 
         // On vérifie que l'ajout a bien fonctionné.
         if (!$result) {
-            throw new Exception("Une erreur est survenue lors de l'ajout du commentaire.");
+            throw new Exception("Une erreur est survenue lors de la création du compte.");
         }
 
         // On redirige vers la page de connexion.
         Utils::redirect("connectionForm");
     }
 
+    /**
+     * Création d'un compte utilisateur.
+     * @return void
+     */
+    public function updateUser() : void 
+    {
+        // On récupère les données du formulaire.
+        $id = Utils::request("id");
+        $login = Utils::request("login");
+        $email = Utils::request("email");
+        //$password = Utils::request("password");
+
+        // On vérifie que le login est disponible.
+        //$userLogin = $this->userManager->getUserByLogin($login);
+        //if ($userLogin) {
+        //    throw new Exception("Ce pseudo n'est pas disponible.");
+        //}
+
+        //On crée un objet utilisateur.
+        $user = new User([
+            'id' => $id,
+            'login' => $login,
+            'email' => $email,
+            //'password' => password_hash($password, PASSWORD_DEFAULT)
+        ]);
+
+        //On modifie le profil de l'utilisateur.
+        $this->userManager->updateUser($user);
+
+        // On redirige vers la page de compte.
+        Utils::redirect("account");
+    }
 
 }

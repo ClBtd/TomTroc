@@ -67,4 +67,14 @@ class Utils {
         return $page === $action ? 'focus' : '';
     }
 
+    /**
+     * Compte le nombre d'années d'inscription de l'utilisateur.
+     * @return string
+     */
+    public static function years(DateTime $date) {
+        $currentDate = new DateTime();
+        $interval = $date->diff($currentDate);
+        return $interval->y;
+    }
+
 }

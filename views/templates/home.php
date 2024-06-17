@@ -32,7 +32,7 @@
                     <div class="text-card">
                         <h4><?=$newBook->getTitle()?></h3>
                         <h5><?=$newBook->getAuthor()?></h4>
-                        <p>Vendu par : <?=$newBook->getUsername()?></p>
+                        <p>Vendu par : <?=$newBook->getLogin()?></p>
                     </div>
                 </div>
             </a>

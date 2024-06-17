@@ -11,7 +11,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getNewBooks() : array
     {
-        $sql = "SELECT Books.*, Users.username AS username
+        $sql = "SELECT Books.*, Users.login AS login
         FROM Books
         JOIN Users ON Books.user_id = Users.id
         WHERE Books.disponibility = 1
@@ -33,7 +33,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getAllBooks() : array
     {
-        $sql = "SELECT Books.*, Users.username AS username
+        $sql = "SELECT Books.*, Users.login AS login
         FROM Books
         JOIN Users ON Books.user_id = Users.id
         ORDER BY Books.id DESC";
@@ -53,7 +53,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getSearchedBooks(string $searchedBooks) : array
     {
-        $sql = "SELECT Books.*, Users.username AS username
+        $sql = "SELECT Books.*, Users.login AS login
         FROM Books
         JOIN Users ON Books.user_id = Users.id
         WHERE Books.title LIKE :search
@@ -74,7 +74,7 @@ class BookManager extends AbstractEntityManager
      */
     public function getBookById(int $bookId) : ?Book
     {
-        $sql = "SELECT Books.*, Users.username AS username, Users.picture AS user_picture
+        $sql = "SELECT Books.*, Users.login AS login, Users.picture AS user_picture
         FROM Books
         JOIN Users ON Books.user_id = Users.id
         WHERE Books.id = $bookId";

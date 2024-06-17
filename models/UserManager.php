@@ -29,7 +29,7 @@ class UserManager extends AbstractEntityManager
      */
     public function getUserByLogin(string $login) : ?User 
     {
-        $sql = "SELECT * FROM Users WHERE username = :login";
+        $sql = "SELECT * FROM Users WHERE login = :login";
         $result = $this->db->query($sql, ['login' => $login]);
         $user = $result->fetch();
         if ($user) {
@@ -45,11 +45,12 @@ class UserManager extends AbstractEntityManager
      */
     public function createUser(User $user) : bool 
     {
-        $sql = "INSERT INTO Users (username, email, password) VALUES (:login, :email, :password)";
+        $sql = "INSERT INTO Users (login, email, password, inscription) VALUES (:login, :email, :password, :inscription)";
         $params =[
             ':login' => $user->getLogin(),
             ':email' => $user->getEmail(),
-            ':password' => $user->getPassword()
+            ':password' => $user->getPassword(),
+            ':inscription' => date('Y-m-d')
         ];
 
         $result = $this->db->query($sql, $params);
@@ -58,7 +59,7 @@ class UserManager extends AbstractEntityManager
 
     /**
      * Récupérer les infos d'un utilisateur.
-     * @param string $email $password
+     * @param string $email
      * @return User
      */
     public function getUserInfos(string $email) : ?User 
@@ -70,5 +71,22 @@ class UserManager extends AbstractEntityManager
             return $userInfos = new User($user);
         }
         return null;
+    }
+
+    /**
+     * Modifier les données d'un utilisateur.
+     * @param string $login $email $id
+     * @return void
+     */
+    public function updateUser(User $user) : void
+    {
+        $sql = "UPDATE Users SET login=:login, email=:email WHERE Users.id=:id";
+        $params =[
+            ':login' => $user->getLogin(),
+            ':email' => $user->getEmail(),
+            ':id' => $user->getId(),
+        ];
+
+        $result = $this->db->query($sql, $params);
     }
 }

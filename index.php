@@ -65,6 +65,10 @@ try {
             $userController->showAccount();
             break;
 
+        case 'updateUser' :
+            $userController->updateUser();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }
