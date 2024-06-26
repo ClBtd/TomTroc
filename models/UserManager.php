@@ -74,6 +74,32 @@ class UserManager extends AbstractEntityManager
     }
 
     /**
+     * Charger la photo de profil.
+     * @param string $picture_path $filename
+     * @return void
+     */
+    public function uploadPicture(string $picturePath, string $fileName, string $ext, int $userId) : void 
+    {
+        $filePath = "img/users/$fileName";
+        $fileExtensions = ['.jpg', '.png'];
+
+        foreach ($fileExtensions as $fileExtension) {
+            if (file_exists($filePath.$fileExtension)) {
+                unlink($filePath.$fileExtension);
+            }
+        }
+
+        move_uploaded_file($picturePath, $filePath . $ext);
+
+        $sql = "UPDATE Users SET picture=:picture WHERE Users.id=:id";
+        $params =[
+            ':picture' => $fileName . $ext,
+            ':id' => $userId
+        ];
+        $result = $this->db->query($sql, $params);
+    }
+    
+    /**
      * Modifier les données d'un utilisateur.
      * @param string $login $email $id
      * @return void

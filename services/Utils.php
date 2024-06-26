@@ -77,4 +77,19 @@ class Utils {
         return $interval->y;
     }
 
+    public static function sanitizeFilename($username) {
+
+        // Supprime les apostrophes et autres caractères spéciaux
+        $username = preg_replace('/[\'"^£$%&*()}{@#~?><>,|=_+¬-]/', '', $username);
+
+        // Remplace les espaces par des tirets
+        $username = str_replace(' ', '-', $username);
+    
+        // Convertit en minuscules (optionnel)
+        $username = strtolower($username);
+    
+        return $username;
+    }
+    
+
 }

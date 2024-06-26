@@ -65,6 +65,13 @@ try {
             $userController->showAccount();
             break;
 
+        case 'picture' : 
+            $userController->picture();
+            break;
+
+        case 'loadPicture' :
+            $userController->loadPicture();
+
         case 'updateUser' :
             $userController->updateUser();
             break;

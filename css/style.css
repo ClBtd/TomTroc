@@ -524,7 +524,7 @@ h3 {
 
 .userPage {
   background-color: var(--beige);
-  padding: 170px 155px 100px 150px;
+  padding: 90px 150px 100px 150px;
 }
 
 .userPage h3 {
@@ -648,6 +648,105 @@ h3 {
   padding: 22px 38px;
   border: 1px solid var(--green);
   border-radius: 10px;
+}
+
+table {
+  margin: 32px 0 100px 0;
+  background-color: var(--white);
+  border: 1px solid var(--clear-grey);
+  border-radius: 20px;
+  border-collapse: collapse;
+}
+
+th {
+  font-size: 0.5em;
+  font-weight: 600;
+  text-align: left;
+  padding-top: 33px;
+}
+
+th:first-of-type {
+  padding-left: 66px;
+}
+
+td {
+  border-top: 1px solid var(--clear-grey);
+  font-size: 0.75em;
+  padding-right: 80px;
+  
+}
+
+tbody tr:nth-child(even) {
+  background-color: #EDF2F6;
+} 
+
+.cover {
+  height: 78px;
+  object-fit: cover;
+  margin: 26px 0 26px 66px;
+
+}
+
+.short-description {
+  height: 60px;
+  width: 130px;
+  padding: 36px 80px 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box; 
+            -webkit-box-orient: vertical; 
+            -webkit-line-clamp: 4; 
+}
+
+.dispo {
+  color: var(--white);
+  font-size: 0.55em;
+  background-color: var(--green);
+  border-radius: 30px;
+  padding: 4px 13px;
+}
+
+.no-dispo {
+  color: var(--white);
+  font-size: 0.55em;
+  background-color: var(--brown);
+  border-radius: 30px;
+  padding: 4px 13px;
+}
+
+.links {
+  display: flex;
+  font-size: 0.75em;
+}
+
+.links a {
+  color: var(--black);
+  padding-right: 28px;
+}
+
+.links .delete {
+  color: #CB2D2D;
+}
+
+
+/*Page de chargement des images*/
+
+.loadPicture {
+  padding: 50px 0 220px 200px;
+  background-color: var(--beige);
+}
+
+.loadPicture form {
+  margin-top: 50px;
+}
+
+.loadPicture input {
+  padding-top: 20px;
+}
+
+.loadPicture .link-button {
+  border-color: var(--beige);
+  margin: 50px 0 0 20px;
 }
 
 /* Page d'erreur */

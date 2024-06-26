@@ -5,10 +5,10 @@
             <?php if ($userInfos->getPicture()): ?>
                 <img src="img/users/<?=$userInfos->getPicture()?>" alt="Image de profil de <?=$userInfos->getLogin()?>" width='135'>
                 <br>
-                <a href="index.php?action=loadPicture">modifier</a>
+                <a href="index.php?action=picture">modifier</a>
             <?php else : ?>
                 <div id='noPicture'></div>
-                <a href="index.php?action=loadPicture">ajouter une image de profil</a>
+                <a href="index.php?action=picture">ajouter une image de profil</a>
             <?php endif; ?>
             <p id="line2"></p>
             <h4><?=$userInfos->getLogin()?></h4>
@@ -46,6 +46,55 @@
             </form>
         </div>
     </div>
+    <?php if (!empty($userBooks)) : ?>
+    <table>
+            <thead>
+                <th>
+                    PHOTO
+                </th>
+                <th>
+                    TITRE
+                </th>
+                <th>
+                    AUTEUR
+                </th>
+                <th>
+                    DESCRIPTION
+                </th>
+                <th>
+                    DISPONIBILITE
+                </th>
+                <th>
+                    ACTION
+                </th>
+            </thead>
+            <tbody>
+                <?php foreach ($userBooks as $book) : ?>
+                    <tr class="userBook">
+                        <td><img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>" width="78" class="cover"></td>
+                        <td><?=$book->getTitle()?></td>
+                        <td><?=$book->getAuthor()?></td>
+                        <td class="short-description"><?=$book->getDescription()?></td>
+                        <?php if ($book->getDisponibility()) : ?>
+                            <td>
+                                <div class="dispo">disponible</div>
+                            </td>
+                        <?php else : ?>
+                            <td>
+                                <div class="no-dispo">non dispo.</div>
+                            </td>
+                        <?php endif; ?>
+                        <td>
+                            <div class="links">
+                                <a href="index.php?action=updateBook">Editer</a>
+                                <a href="index.php?action=updateBook" class="delete">Supprimer</a>
+                            </div>
+                        </td>
+                    </tr>
+              <?php endforeach;?>
+            </tbody>
+        </table>
+    <?php endif; ?>
 </div>
 
 

@@ -154,7 +154,61 @@ class UserController {
     }
 
     /**
-     * Création d'un compte utilisateur.
+     * Page de chargement d'une image.
+     * @return void
+     */
+    public function picture() : void 
+    {
+        // On vérifie que l'utilisateur est connecté.
+        Utils::checkIfUserIsConnected();
+
+        // On affiche la page de téléchargement de l'image.
+        $view = new View("Mon compte");
+        $view->render("picture");
+    }
+
+    /**
+     * Page d'ajout d'une image.
+     * @return void
+     */
+    public function loadPicture() : void 
+    {
+        // On vérifie que l'utilisateur est connecté.
+        Utils::checkIfUserIsConnected();
+
+        //On vérifie qu'un fichier a bien été chargé
+        $picture = $_FILES['picture'];
+        if (empty($picture)) {
+            throw new Exception("Aucun fichier n'a été déposé.");
+        } 
+
+        // On vérifie le format de l'image et on répcupère l'extension.
+        $finfo = new finfo();
+        $info = $finfo->file($picture['tmp_name'], FILEINFO_MIME_TYPE);
+        if ($info === 'image/jpeg') {
+            $ext = '.jpg';
+        }
+        elseif ($info === 'image/png') {
+            $ext = '.png';
+        }
+        else {
+            throw new Exception("Ce format n'est pas accepté.");
+        }
+
+        //On récupère le nom de l'utilisateur pour créer le nom du fichier.
+        $userInfos = $this->userManager->getUserByEmail($_SESSION['userEmail']);
+        $userName = $userInfos->getLogin();
+        $fileName = Utils::sanitizeFilename($userName);
+
+        $this->userManager->uploadPicture($picture['tmp_name'], $fileName, $ext, $userInfos->getId());
+
+        // On affiche la page de téléchargement de l'image.
+        $view = new View("Mon compte");
+        $view->render("picture");
+    }
+
+    /**
+     * Modifiaction des infos utilisateur.
      * @return void
      */
     public function updateUser() : void 
