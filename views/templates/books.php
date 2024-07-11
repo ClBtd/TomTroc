@@ -12,8 +12,12 @@
         <?php foreach ($books as $book) : ?>
             <a href="index.php?action=bookDetail&bookId=<?=$book->getId()?>">
                 <div class="book-card">
-                    <div class="<?= $book->getDisponibility() == 1 ? 'dispo' : 'no-dispo' ?>">
-                        <img src="img/covers/<?=$book->getCover()?>" alt="Couverture de <?=$book->getTitle()?>">
+                    <div class="<?= $book->getDisponibility() == 1 ? 'available' : 'no-available' ?>">
+                        <?php if ($book->getCover()) : ?>
+                            <img src="img/covers/<?=$book->getCover()?>" alt="Couverture de <?=$book->getTitle()?>">
+                        <?php else :?> 
+                            <img src="img/covers/default.png" alt="Ce livre n'a pas de couverture enregistrée.">
+                        <?php endif;?>
                         <div class="text-overlay">
                             <p>non dispo.</p>
                         </div>

@@ -40,7 +40,7 @@ class UserManager extends AbstractEntityManager
 
     /**
      * Ajouter un nouvel utilisateur.
-     * @param string $login $email $password
+     * @param User $user
      * @return bool
      */
     public function createUser(User $user) : bool 
@@ -106,13 +106,28 @@ class UserManager extends AbstractEntityManager
      */
     public function updateUser(User $user) : void
     {
-        $sql = "UPDATE Users SET login=:login, email=:email WHERE Users.id=:id";
-        $params =[
-            ':login' => $user->getLogin(),
-            ':email' => $user->getEmail(),
-            ':id' => $user->getId(),
-        ];
+        
+        if (empty($user->getPassword())) {
+            $sql = "UPDATE Users SET login=:login, email=:email WHERE Users.id=:id";
+            $params =[
+                ':login' => $user->getLogin(),
+                ':email' => $user->getEmail(),
+                ':id' => $user->getId()
+            ];
+        }
+
+        else {
+            $sql = "UPDATE Users SET login=:login, email=:email, password=:password WHERE Users.id=:id";
+            $params =[
+                ':login' => $user->getLogin(),
+                ':email' => $user->getEmail(),
+                ':password' => $user->getPassword(),
+                ':id' => $user->getId()
+            ];  
+        }
+        
 
         $result = $this->db->query($sql, $params);
+
     }
 }

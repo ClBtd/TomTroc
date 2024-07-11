@@ -8,7 +8,7 @@
     private string $login;
     private string $title;
     private string $author;
-    private string $cover;
+    private ?string $cover;
     private string $description;
     private string $user_picture;
 
@@ -125,9 +125,14 @@
      * Setter pour la couverture.
      * @param string $cover
      */
-    public function setCover(string $cover) : void 
+    public function setCover(?string $cover) : void 
     {
-        $this->cover = $cover;
+        if ($cover !== NULL) {
+            $this->cover = $cover;
+        }
+        else {
+            $this->cover = '';
+        }
     }
 
      /**

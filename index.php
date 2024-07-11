@@ -76,6 +76,34 @@ try {
             $userController->updateUser();
             break;
 
+        case 'bookForm' :
+            $bookController->bookForm();
+            break;
+        
+        case 'updateBook' :
+            $bookController->updateBook();
+            break;
+        
+        case 'deleteBook' : 
+            $bookController->deleteBook();
+            break;
+        
+        case 'bookAddForm' :
+            $bookController->bookAddForm();
+            break;
+
+        case 'addBook' :
+            $bookController->addBook();
+            break;
+        
+        case 'cover' : 
+            $bookController->cover();
+            break;
+        
+        case 'loadCover' : 
+            $bookController->loadCover();
+            break;
+
         default:
             throw new Exception("La page demandée n'existe pas.");
     }

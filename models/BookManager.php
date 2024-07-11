@@ -108,4 +108,102 @@ class BookManager extends AbstractEntityManager
         return $books;
     }
 
+    /**
+     * Modifier les données d'un livre.
+     * @param Book $book
+     * @return void
+     */
+    public function updateBook(Book $book) : void
+    {
+        $sql = "UPDATE Books SET title=:title, author=:author, description=:description, disponibility=:disponibility WHERE Books.id=:id";
+        $params =[
+                ':title' => $book->getTitle(),
+                ':author' => $book->getAuthor(),
+                ':description' => $book->getDescription(),
+                ':disponibility' => $book->getDisponibility(),
+                ':id' => $book->getId()
+            ];  
+
+        $result = $this->db->query($sql, $params);
+
+    }
+
+    /**
+     * Supprime un livre.
+     * @return bool $result
+     */
+    public function deleteBook(int $id, string $cover) : bool
+    {
+        if (file_exists("img/covers/$cover")) {
+            unlink("img/covers/$cover");
+        }
+
+        $sql = "DELETE FROM Books WHERE id = :id";
+        $result = $this->db->query($sql, ['id' => $id]);
+        return $result->rowCount() > 0;
+
+    }
+
+    /**
+     * Ajouter un nouveau livre.
+     * @param Book $book
+     * @return bool
+     */
+    public function addBook(Book $book) : bool 
+    {
+        $sql = "INSERT INTO Books (title, author, description, disponibility, user_id) VALUES (:title, :author, :description, :disponibility, :user_id)";
+        $params =[
+            ':title' => $book->getTitle(),
+            ':author' => $book->getAuthor(),
+            ':description' => $book->getDescription(),
+            ':disponibility' => $book->getDisponibility(),
+            ':user_id' => $book->getUserId()
+        ];
+
+        $result = $this->db->query($sql, $params);
+        return $result->rowCount() > 0;
+    }
+
+    /**
+     * Récupérer les infos d'un utilisateur.
+     * @param string $email
+     * @return User
+     */
+    public function getUserInfos(string $email) : ?User 
+    {
+        $sql = "SELECT * FROM Users WHERE email = :email";
+        $result = $this->db->query($sql, ['email' => $email]);
+        $user = $result->fetch();
+        if ($user) {
+            return $userInfos = new User($user);
+        }
+        return null;
+    }
+
+    /**
+     * Charger la couverture d'un livre.
+     * @param string $coverPath $filename
+     * @return void
+     */
+    public function uploadCover(string $coverPath, string $fileName, string $ext, int $userId) : void 
+    {
+        $filePath = "img/covers/$fileName";
+        $fileExtensions = ['.jpg', '.png'];
+
+        foreach ($fileExtensions as $fileExtension) {
+            if (file_exists($filePath.$fileExtension)) {
+                unlink($filePath.$fileExtension);
+            }
+        }
+
+        move_uploaded_file($coverPath, $filePath . $ext);
+
+        $sql = "UPDATE Books SET cover=:cover WHERE Books.id=:id";
+        $params =[
+            ':cover' => $fileName . $ext,
+            ':id' => $userId
+        ];
+        $result = $this->db->query($sql, $params);
+    }
+
 }

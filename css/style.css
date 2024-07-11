@@ -171,14 +171,15 @@ h3 {
   margin:0;
 }
 
-.no-dispo {
+
+.no-available {
   display: inline-block;
   position: relative;
   width: 200px;
   height: 200px;
 }
 
-.no-dispo img {
+.no-available img {
   display: block;
   width: 100%;
   height: 100%;
@@ -202,8 +203,121 @@ h3 {
   padding: 4px 13px;
 }
 
-.dispo p {
+.available p {
   display: none;
+}
+
+/*Book Form*/
+
+.bookForm {
+  padding: 40px 150px 92px 150px;
+  background-color: var(--beige);
+}
+
+.back {
+  color: var(--grey-text);
+  text-decoration: none;
+  font-size: 0.87em;
+  font-weight: 400;
+}
+
+.bookForm h2 {
+  font-size: 1.62em;
+  margin: 23px 0;
+}
+
+.bookForm .container {
+  width: fit-content;
+  background-color: var(--white);
+  padding: 56px 50px 68px 50px;
+  border-radius: 20px;
+}
+
+.bookForm .item {
+  display: flex;
+  flex-direction: column;
+}
+
+.bookForm h4 {
+  margin: 0;
+  color: var(--grey-text);
+  font-size: 0.87em;
+  font-weight: 400;
+}
+
+.bookForm img {
+  height: 488px;
+  object-fit: cover;
+  margin: 10px 0 23px 0;
+}
+
+.bookForm a {
+  text-align: right;
+  color: var(--black);
+  font-size: 0.75em;
+}
+
+.bookInfos {
+  padding: 0 50px 0 118px;
+}
+
+.bookInfos label {
+  color: var(--grey-text);
+  font-size: 0.87em;
+}
+
+.bookInfos input, select, textarea {
+  width: 435px;
+  height: 50px;
+  background-color: var(--light-grey);
+  border: 1px solid var(--clear-grey);
+  border-radius: 6px;
+  padding-left: 14px;
+  margin: 10px 0 32px 0;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 0.87em;
+}
+
+.bookInfos textarea {
+  height: 250px;
+  padding-top: 16px;
+  padding-right: 12px;
+}
+
+.bookInfos button {
+  font-size: 1em;
+  font-weight: 600;
+  color: var(--white);
+  text-decoration: none;
+  background-color: var(--green);
+  padding: 22px 134px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+}
+
+.addCover {
+  padding: 20px 50px 40px 118px;
+}
+
+.addCover h4 {
+  padding-bottom: 15px;
+}
+
+.addCover a {
+  font-size: 0.9em;
+}
+
+/* Banners */
+
+.bannerSuccess {
+  width: fit-content;
+  margin: 50px auto;
+  text-align: center;
+  color: var(--white);
+  background-color: var(--green);
+  border-radius: 20px;
+  padding: 10px 20px;
 }
 
 /* Home */
@@ -688,7 +802,7 @@ tbody tr:nth-child(even) {
 }
 
 .short-description {
-  height: 60px;
+  height: 58px;
   width: 130px;
   padding: 36px 80px 0 0;
   overflow: hidden;
@@ -701,17 +815,17 @@ tbody tr:nth-child(even) {
 .dispo {
   color: var(--white);
   font-size: 0.55em;
-  background-color: var(--green);
   border-radius: 30px;
   padding: 4px 13px;
 }
 
-.no-dispo {
-  color: var(--white);
-  font-size: 0.55em;
+.yes {
+  background-color: var(--green);
+}
+
+.no {
+  width: 35px;
   background-color: var(--brown);
-  border-radius: 30px;
-  padding: 4px 13px;
 }
 
 .links {
@@ -727,7 +841,6 @@ tbody tr:nth-child(even) {
 .links .delete {
   color: #CB2D2D;
 }
-
 
 /*Page de chargement des images*/
 

@@ -81,7 +81,7 @@ class UserController {
         }
 
         // On vérifie que le mot de passe est correct.
-        if (!password_verify($password, $user->getPassword())) {
+        if (!password_verify($password,$user->getPassword())) {
             throw new Exception("Le mot de passe est incorrect.");
         }
 
@@ -150,7 +150,7 @@ class UserController {
         }
 
         // On redirige vers la page de connexion.
-        Utils::redirect("connectionForm");
+        Utils::redirect("connectionForm", ["success" => 1]);
     }
 
     /**
@@ -163,7 +163,7 @@ class UserController {
         Utils::checkIfUserIsConnected();
 
         // On affiche la page de téléchargement de l'image.
-        $view = new View("Mon compte");
+        $view = new View("Image de profil");
         $view->render("picture");
     }
 
@@ -200,11 +200,11 @@ class UserController {
         $userName = $userInfos->getLogin();
         $fileName = Utils::sanitizeFilename($userName);
 
+        //On charge la nouvelle image et on supprime l'ancienne si elle existe
         $this->userManager->uploadPicture($picture['tmp_name'], $fileName, $ext, $userInfos->getId());
 
-        // On affiche la page de téléchargement de l'image.
-        $view = new View("Mon compte");
-        $view->render("picture");
+        // On redirige vers la page de compte.
+        Utils::redirect("account", ["success"=>1]);
     }
 
     /**
@@ -214,30 +214,42 @@ class UserController {
     public function updateUser() : void 
     {
         // On récupère les données du formulaire.
-        $id = Utils::request("id");
-        $login = Utils::request("login");
-        $email = Utils::request("email");
-        //$password = Utils::request("password");
+        $id = htmlspecialchars(Utils::request("id"));
+        $login = htmlspecialchars(Utils::request("login"));
+        $email = htmlspecialchars(Utils::request("email"));
+        $password = htmlspecialchars(Utils::request("password"));
 
         // On vérifie que le login est disponible.
-        //$userLogin = $this->userManager->getUserByLogin($login);
-        //if ($userLogin) {
-        //    throw new Exception("Ce pseudo n'est pas disponible.");
-        //}
+        $userLogin = $this->userManager->getUserByLogin($login);
+        if ($userLogin) {
+            $user1 = $userLogin->getLogin();
+            $userMail = $this->userManager->getUserByEmail($email);
+            $user2 = $userMail->getLogin();
+            if ($user1 !== $user2) {
+                throw new Exception("Ce pseudo n'est pas disponible.");
+            }
+        }
+        
 
         //On crée un objet utilisateur.
         $user = new User([
             'id' => $id,
             'login' => $login,
             'email' => $email,
-            //'password' => password_hash($password, PASSWORD_DEFAULT)
         ]);
+
+        if (!empty($password)) {
+            $user->setPassword(password_hash($password, PASSWORD_DEFAULT));
+        }
 
         //On modifie le profil de l'utilisateur.
         $this->userManager->updateUser($user);
 
+        //On change le mail de session 
+        $_SESSION['userEmail'] = $email;
+
         // On redirige vers la page de compte.
-        Utils::redirect("account");
+        Utils::redirect("account", ["success"=>2]);
     }
 
 }

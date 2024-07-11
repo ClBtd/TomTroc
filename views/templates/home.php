@@ -28,7 +28,11 @@
         <?php foreach ($newBooks as $newBook) : ?>
             <a href="index.php?action=bookDetail&bookId=<?=$newBook->getId()?>">
                 <div class="book-card">
-                    <img src="img/covers/<?=$newBook->getCover()?>" alt="Couverture de <?=$newBook->getTitle()?>">
+                    <?php if ($newBook->getCover()) :?>
+                        <img src="img/covers/<?=$newBook->getCover()?>" alt="Couverture de <?=$newBook->getTitle()?>">
+                    <?php else :?> 
+                        <img src="img/covers/default.png" alt="Ce livre n'a pas de couverture enregistrée.">
+                    <?php endif;?>
                     <div class="text-card">
                         <h4><?=$newBook->getTitle()?></h3>
                         <h5><?=$newBook->getAuthor()?></h4>

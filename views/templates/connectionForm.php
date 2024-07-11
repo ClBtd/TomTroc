@@ -1,6 +1,13 @@
 <div class="connection">
     <div class="connectionForm">
         <h2>Connexion</h2>
+
+        <?php if (isset($_GET["success"])) : 
+            if ($_GET["success"] === 1) : ?>
+                <p class="bannerSuccess">Votre inscription a étét correctement réalisée, vous pouvez désormais vous connecter.</p> 
+            <?php endif; 
+        endif; ?>
+
         <form action="index.php?action=connectUser" method="post">
             <label for="email">Adresse email</label>
             <br>

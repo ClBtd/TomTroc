@@ -1,5 +1,29 @@
 <div class='userPage'>
+
     <h3>Mon compte</h3>
+
+    <?php if (isset($_GET["success"])) : 
+        switch($_GET["success"]) :
+            case 1: ?>
+                <p class="bannerSuccess">Votre image a été correctement chargée.</p>
+                <?php break;
+            case 2: ?>
+                <p class="bannerSuccess">Vos informations personnelles ont été correctement modifiées.</p>
+                <?php break;
+            case 3: ?>
+                 <p class="bannerSuccess">Les informations du livre ont été correctement modifiées.</p>
+                 <?php break;
+            case 4: ?>
+                <p class="bannerSuccess">Votre livre a été correctement supprimé.</p>
+                <?php break;
+            case 5: ?>
+                <p class="bannerSuccess">Votre livre a été correctement ajouté.</p>
+                <?php break; 
+            default:
+                break; 
+        endswitch ;
+    endif; ?>
+
     <div class="container">
         <div class="userInfos">
             <?php if ($userInfos->getPicture()): ?>
@@ -26,6 +50,7 @@
                 <p><?=count($userBooks)?> livres</p>
             </div>
         </div>
+
         <div class="userInfos">
             <h3>Vos informations personnelles</h3>
             <form action="index.php?action=updateUser" method="post">
@@ -36,7 +61,7 @@
                 <br>
                 <label for="password">Mot de passe</label>
                 <br>
-                <input type="password" name="password" id="password" value="<?=$userInfos->getPassword()?>">
+                <input type="password" name="password" id="password">
                 <br>
                 <label for="login">Pseudo</label>
                 <br>
@@ -46,8 +71,9 @@
             </form>
         </div>
     </div>
+
     <?php if (!empty($userBooks)) : ?>
-    <table>
+        <table>
             <thead>
                 <th>
                     PHOTO
@@ -71,30 +97,37 @@
             <tbody>
                 <?php foreach ($userBooks as $book) : ?>
                     <tr class="userBook">
-                        <td><img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>" width="78" class="cover"></td>
+                        <td>
+                            <?php if ($book->getCover()) :?>
+                                <img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>" width="78" class="cover">
+                            <?php endif; ?>
+                        </td>
                         <td><?=$book->getTitle()?></td>
                         <td><?=$book->getAuthor()?></td>
                         <td class="short-description"><?=$book->getDescription()?></td>
                         <?php if ($book->getDisponibility()) : ?>
                             <td>
-                                <div class="dispo">disponible</div>
+                                <div class="dispo yes">disponible</div>
                             </td>
                         <?php else : ?>
                             <td>
-                                <div class="no-dispo">non dispo.</div>
+                                <div class="dispo no">non dispo.</div>
                             </td>
                         <?php endif; ?>
                         <td>
                             <div class="links">
-                                <a href="index.php?action=updateBook">Editer</a>
-                                <a href="index.php?action=updateBook" class="delete">Supprimer</a>
+                                <a href="index.php?action=bookForm&id=<?=$book->getId()?>">Editer</a>
+                                <a href="index.php?action=deleteBook&id=<?=$book->getId()?>" class="delete">Supprimer</a>
                             </div>
                         </td>
                     </tr>
-              <?php endforeach;?>
+                <?php endforeach;?>
             </tbody>
         </table>
     <?php endif; ?>
+
+    <a href="index.php?action=bookAddForm" class="link-button">Ajouter un livre</a>
+
 </div>
 
 

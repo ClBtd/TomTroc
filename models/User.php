@@ -8,8 +8,8 @@ class User extends AbstractEntity
     protected int $id;
     private string $login;
     private string $email;
-    private string $password;
-    private ?string $picture;
+    private ?string $password = null;
+    private ?string $picture = null;
     private DateTime $inscription;
 
     /**
@@ -79,7 +79,7 @@ class User extends AbstractEntity
      * Getter pour le password.
      * @return string
      */
-    public function getPassword() : string 
+    public function getPassword() : ?string 
     {
         return $this->password;
     }
