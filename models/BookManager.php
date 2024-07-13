@@ -111,9 +111,9 @@ class BookManager extends AbstractEntityManager
     /**
      * Modifier les données d'un livre.
      * @param Book $book
-     * @return void
+     * @return bool $result
      */
-    public function updateBook(Book $book) : void
+    public function updateBook(Book $book) : bool
     {
         $sql = "UPDATE Books SET title=:title, author=:author, description=:description, disponibility=:disponibility WHERE Books.id=:id";
         $params =[
@@ -125,6 +125,7 @@ class BookManager extends AbstractEntityManager
             ];  
 
         $result = $this->db->query($sql, $params);
+        return $result->rowCount() > 0;
 
     }
 
@@ -183,9 +184,9 @@ class BookManager extends AbstractEntityManager
     /**
      * Charger la couverture d'un livre.
      * @param string $coverPath $filename
-     * @return void
+     * @return bool $result
      */
-    public function uploadCover(string $coverPath, string $fileName, string $ext, int $userId) : void 
+    public function uploadCover(string $coverPath, string $fileName, string $ext, int $bookId, bool $existing) : bool 
     {
         $filePath = "img/covers/$fileName";
         $fileExtensions = ['.jpg', '.png'];
@@ -198,12 +199,19 @@ class BookManager extends AbstractEntityManager
 
         move_uploaded_file($coverPath, $filePath . $ext);
 
-        $sql = "UPDATE Books SET cover=:cover WHERE Books.id=:id";
-        $params =[
-            ':cover' => $fileName . $ext,
-            ':id' => $userId
-        ];
-        $result = $this->db->query($sql, $params);
+        if (!$existing) {
+            $sql = "UPDATE Books SET cover=:cover WHERE Books.id=:id";
+            $params =[
+                ':cover' => $fileName . $ext,
+                ':id' => $bookId
+            ];
+            $result = $this->db->query($sql, $params);
+            return $result->rowCount() > 0;
+        }
+       
+        else {
+            return $result = true; 
+        }
     }
 
 }

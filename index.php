@@ -35,6 +35,9 @@ try {
             $bookController->showBookDetail();
             break;
         
+        case 'userPage':
+            $userController->showUserPage();
+        
         case 'connectionForm' :
             $userController->displayConnectionForm();
             break;

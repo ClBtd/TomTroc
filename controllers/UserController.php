@@ -200,11 +200,23 @@ class UserController {
         $userName = $userInfos->getLogin();
         $fileName = Utils::sanitizeFilename($userName);
 
+        //On cherche si une image est déjà chargée. 
+        $userPicture = $userInfos->getPicture();
+        if ($userPicture) {
+            $existing = true;
+        }
+        else $existing = false;
+
         //On charge la nouvelle image et on supprime l'ancienne si elle existe
-        $this->userManager->uploadPicture($picture['tmp_name'], $fileName, $ext, $userInfos->getId());
+        $result = $this->userManager->uploadPicture($picture['tmp_name'], $fileName, $ext, $userInfos->getId(), $existing);
+
+        // On vérifie que la modification a bien fonctionné.
+        if (!$result) {
+            throw new Exception("Une erreur est survenue lors du chargement de l'image.");
+        }
 
         // On redirige vers la page de compte.
-        Utils::redirect("account", ["success"=>1]);
+        Utils::redirect("account", ["success"=>1, "results"=>$fileName]);
     }
 
     /**
@@ -243,7 +255,12 @@ class UserController {
         }
 
         //On modifie le profil de l'utilisateur.
-        $this->userManager->updateUser($user);
+        $result = $this->userManager->updateUser($user);
+
+        // On vérifie que la modification a bien fonctionné.
+        if (!$result) {
+            throw new Exception("Une erreur est survenue lors de la modification des informations du compte.");
+        }
 
         //On change le mail de session 
         $_SESSION['userEmail'] = $email;

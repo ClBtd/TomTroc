@@ -89,7 +89,12 @@ class BookController
         ]);
 
         //On modifie les informations du livre.
-        $this->bookManager->updateBook($book);
+        $result = $this->bookManager->updateBook($book);
+
+        // On vérifie que la modification a bien fonctionné.
+        if (!$result) {
+            throw new Exception("Une erreur est survenue lors de l'ajout du livre.");
+        }
 
         // On redirige vers la page de compte.
         Utils::redirect("account", ["success"=>3]);
@@ -209,8 +214,15 @@ class BookController
         $title = $bookInfos->getTitle();
         $fileName = Utils::sanitizeFilename($title);
 
+        //On cherche si une image est déjà chargée. 
+        $bookCover = $bookInfos->getCover();
+        if ($bookCover) {
+            $existing = true;
+        }
+        else $existing = false;
+
         //On charge la nouvelle image et on supprime l'ancienne si elle existe
-        $this->bookManager->uploadCover($cover['tmp_name'], $fileName, $ext, $bookInfos->getId());
+        $this->bookManager->uploadCover($cover['tmp_name'], $fileName, $ext, $bookInfos->getId(), $existing);
 
         // On redirige vers la page de compte.
         Utils::redirect("account", ["success"=>1]);

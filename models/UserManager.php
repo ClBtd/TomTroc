@@ -76,9 +76,9 @@ class UserManager extends AbstractEntityManager
     /**
      * Charger la photo de profil.
      * @param string $picture_path $filename
-     * @return void
+     * @return bool $result
      */
-    public function uploadPicture(string $picturePath, string $fileName, string $ext, int $userId) : void 
+    public function uploadPicture(string $picturePath, string $fileName, string $ext, int $userId, bool $existing) : bool 
     {
         $filePath = "img/users/$fileName";
         $fileExtensions = ['.jpg', '.png'];
@@ -91,20 +91,27 @@ class UserManager extends AbstractEntityManager
 
         move_uploaded_file($picturePath, $filePath . $ext);
 
-        $sql = "UPDATE Users SET picture=:picture WHERE Users.id=:id";
-        $params =[
-            ':picture' => $fileName . $ext,
-            ':id' => $userId
-        ];
-        $result = $this->db->query($sql, $params);
+        if (!$existing) {
+            $sql = "UPDATE Users SET picture=:picture WHERE Users.id=:id";
+            $params =[
+                ':picture' => $fileName . $ext,
+                ':id' => $userId
+            ];
+            $result = $this->db->query($sql, $params);
+            return $result->rowCount() > 0;
+        }
+       
+        else {
+            return $result = true; 
+        }
     }
     
     /**
      * Modifier les données d'un utilisateur.
      * @param string $login $email $id
-     * @return void
+     * @return bool
      */
-    public function updateUser(User $user) : void
+    public function updateUser(User $user) : bool
     {
         
         if (empty($user->getPassword())) {
@@ -126,8 +133,8 @@ class UserManager extends AbstractEntityManager
             ];  
         }
         
-
         $result = $this->db->query($sql, $params);
+        return $result->rowCount() > 0;
 
     }
 }

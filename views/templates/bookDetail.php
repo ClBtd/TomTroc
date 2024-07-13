@@ -17,8 +17,8 @@
         <h5>PROPRIETAIRE</h5>
         <div class="owner">
             <img src="img/users/<?=$book->getUserPicture()?>" alt="Image de profil de <?=$book->getLogin()?>">
-            <p><?=$book->getLogin()?></p>
+            <a href="index.php?action=userPage"><?=$book->getLogin()?></a>
         </div>
-        <a href="index.php?action=sendMessage&userId=<?=$book->getUserId()?>">Envoyer un message</a>
+        <a href="index.php?action=sendMessage&userId=<?=$book->getUserId()?>" class="link-button">Envoyer un message</a>
     </div>
 </div>
