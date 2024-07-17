@@ -641,7 +641,7 @@ h3 {
   width: 50%;
 }
 
-/*Page utilisateur*/
+/*Page de compte utilisateur*/
 
 .userPage {
   width: fit-content;
@@ -672,14 +672,6 @@ h3 {
   height: 135px;
   border-radius: 135px;
   object-fit: cover;
-  margin: 48px 205px 0 205px;
-}
-
-#noPicture {
-  background-color: var(--clear-grey);
-  height: 135px;
-  width: 135px;
-  border-radius: 135px;
   margin: 48px 205px 0 205px;
 }
 
@@ -807,7 +799,6 @@ tbody tr:nth-child(even) {
   height: 78px;
   object-fit: cover;
   margin: 26px 0 26px 66px;
-
 }
 
 .short-description {
@@ -856,6 +847,90 @@ tbody tr:nth-child(even) {
   width: 93%;
   text-align: center;
   margin-top: 50px;
+}
+
+/*Page de profil utilisateur*/
+
+.userProfil {
+  background-color: var(--beige);
+  padding: 183px 150px;
+  width: fit-content;
+}
+
+.userContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.userItem {
+  background-color: var(--white);
+  border-radius: 20px;
+  margin-right: 28px;
+}
+
+.userItem img {
+  height: 135px;
+  object-fit: cover;
+  border-radius: 135px;
+  margin: 48px 103px 70px 103px;
+}
+
+#line3 {
+  margin: 0 50px;
+  padding: 0;
+  width: 242px;
+  height: 0;
+  border-top: 1px solid var(--clear-grey);
+}
+
+.userItem h3 {
+  font-family: 'Playfair Display', 'Times New Roman', Times, serif;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 400;
+  margin: 48px 0 11px 0;
+}
+
+.userItem p {
+  font-size: 0.87em;
+  color: var(--grey-text);
+  text-align: center;
+}
+
+.userItem h5 {
+  margin-top: 21px;
+  text-align: center;
+  font-size: 0.5em;
+  font-weight: 600;
+}
+
+.userItem .library {
+  margin-bottom: 0;
+}
+
+.userItem .button {
+  display: block;
+  width: fit-content;
+  margin: 45px 63px 56px 63px;
+  padding: 22px 36px;
+  background-color: var(--clear-grey);
+  border: 1px solid var(--green);
+  border-radius: 10px;
+  color: var(--green);
+  text-decoration: none;
+  text-wrap: nowrap;
+}
+
+.userItem .cover {
+  height: 78px;
+  object-fit: cover;
+  margin: 26px 0 26px 66px;
+  border-radius: 0;
+}
+
+.userItem a {
+  color: var(--black);
+  text-decoration: none;
 }
 
 /*Page de chargement des images*/

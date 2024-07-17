@@ -16,8 +16,12 @@
         <p class="description"><?=$book->getDescription()?></p>
         <h5>PROPRIETAIRE</h5>
         <div class="owner">
-            <img src="img/users/<?=$book->getUserPicture()?>" alt="Image de profil de <?=$book->getLogin()?>">
-            <a href="index.php?action=userPage"><?=$book->getLogin()?></a>
+        <?php if ($book->getUserPicture()): ?>
+            <img src="img/users/<?=$book->getUserPicture()?>" alt="Image de profil de l'utilisateur">
+        <?php else : ?>
+            <img src="img/users/default.png" alt="Pas d'image de profil">
+        <?php endif; ?>
+            <a href="index.php?action=userPage&userId=<?=$book->getUserId()?>"><?=$book->getLogin()?></a>
         </div>
         <a href="index.php?action=sendMessage&userId=<?=$book->getUserId()?>" class="link-button">Envoyer un message</a>
     </div>

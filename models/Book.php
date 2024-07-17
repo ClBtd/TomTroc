@@ -166,9 +166,14 @@
      * Setter pour l'image de l'utilisateur.
      * @param string $user_picture
      */
-    public function setUserPicture(string $user_picture) : void 
+    public function setUserPicture(?string $user_picture) : void 
     {
-        $this->user_picture = $user_picture;
+        if ($user_picture !== NULL) {
+            $this->user_picture = $user_picture;
+        }
+        else {
+            $this->user_picture = '';
+        }
     }
 
      /**

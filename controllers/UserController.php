@@ -269,4 +269,26 @@ class UserController {
         Utils::redirect("account", ["success"=>2]);
     }
 
+    /**
+     * Page des utilisateurs.
+     * @return void
+     */
+    public function showUserPage() : void 
+    {
+
+        // On récupère l'id de l'utilisateur et ses informations.
+        $userInfos = $this->userManager->getUserById(htmlspecialchars($_GET['userId']));
+
+        //On récupère les livres de l'utilisateur.
+        $userBooks = new BookManager;
+        $userBooks = $userBooks->getBooksByUser($userInfos->getEmail());
+
+        // On affiche la page de téléchargement de l'image.
+        $view = new View("Profil de l'utilisateur");
+        $view->render("userPage", ['userInfos' => $userInfos, 'userBooks' => $userBooks]);
+
+    }
+
+    
+
 }
