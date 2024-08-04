@@ -37,6 +37,7 @@ try {
         
         case 'userPage':
             $userController->showUserPage();
+            break;
         
         case 'connectionForm' :
             $userController->displayConnectionForm();
@@ -62,7 +63,11 @@ try {
         
         case 'messages' :
             $messageController->showMessages();
-            break;  
+            break; 
+            
+        case 'sendMessage' :
+            $messageController->sendMessage();
+            break;
             
         case 'account' :
             $userController->showAccount();
@@ -74,6 +79,7 @@ try {
 
         case 'loadPicture' :
             $userController->loadPicture();
+            break;
 
         case 'updateUser' :
             $userController->updateUser();

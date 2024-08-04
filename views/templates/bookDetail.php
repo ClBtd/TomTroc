@@ -23,6 +23,6 @@
         <?php endif; ?>
             <a href="index.php?action=userPage&userId=<?=$book->getUserId()?>"><?=$book->getLogin()?></a>
         </div>
-        <a href="index.php?action=sendMessage&userId=<?=$book->getUserId()?>" class="link-button">Envoyer un message</a>
+        <a href="index.php?action=messages&userId=<?=$book->getUserId()?>" class="link-button">Envoyer un message</a>
     </div>
 </div>

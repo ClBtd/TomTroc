@@ -70,7 +70,7 @@ class BookManager extends AbstractEntityManager
 
     /**
      * Récupère les informations du livre via son ID.
-     * @return array : un objets Book.
+     * @return Book : un objets Book.
      */
     public function getBookById(int $bookId) : ?Book
     {

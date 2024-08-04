@@ -53,7 +53,19 @@ header img {
 
 .mainNav {
   display: flex; 
+  justify-content: space-between;
   align-items: center;
+}
+
+.burger-toggle {
+  display: none;
+}
+
+.burger-menu {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5em;
 }
 
 .mainNav nav {
@@ -853,7 +865,7 @@ tbody tr:nth-child(even) {
 
 .userProfil {
   background-color: var(--beige);
-  padding: 183px 150px;
+  margin: 18% 15%;
   width: fit-content;
 }
 
@@ -953,6 +965,159 @@ tbody tr:nth-child(even) {
   margin: 50px 0 0 20px;
 }
 
+/* Page de messagerie */
+
+.messages {
+  display: flex;
+}
+
+aside {
+  width: 25%;
+  background-color: var(--beige);
+}
+
+aside h3 {
+  font-size: 1.62em;
+  margin: 55px 0 27px 34px;
+}
+
+.conversation {
+  width: calc(100%-68px);
+  overflow: hidden;
+  display: flex;
+  padding: 18px 34px 18px 34px;
+}
+
+.conversation img, .discussionInfos img {
+  display: block;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 48px;
+}
+
+.conversationContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  margin-left: 12px;
+  overflow: hidden;
+}
+
+.conversationInfos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 0 0 12px;
+  color: black;
+  text-decoration: none;
+}
+
+.conversationInfos h4, time {
+  font-size: 0.87em;
+  font-weight: 400;
+  margin: 0;
+}
+
+.conversation p:last-of-type {
+  margin: 7px 0 0 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--grey-text);
+  font-size: 0.75em;
+}
+
+.current {
+  background-color: var(--white);
+}
+
+.discussion {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.discussionInfos {
+  display: flex;
+  padding: 35px 44px;
+  align-items: center;
+}
+
+.discussionInfos  a {
+  margin-left: 12px;
+  color: var(--black);
+  font-size: 0.87em;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.messagesContent p {
+  font-size: 0.75em;
+  padding: 10px 18px;
+  text-align: justify;
+}
+
+.messages time {
+  color: var(--grey-text);
+  font-size: 0.75em;
+} 
+
+.senderMessage {
+  margin: 38px 250px 0px 44px;
+}
+
+.senderMessageInfos {
+  display: flex;
+  align-items: center;
+}
+
+.senderMessage img {
+  height: 24px;
+  object-fit: cover;
+  border-radius: 24px;
+  margin-right: 5px;
+}
+
+.senderMessage p {
+  background-color: var(--white);
+}
+
+.userMessage {
+  text-align: right;
+  margin: 38px 150px 0px 100px;
+}
+
+.userMessage p {
+  background-color: var(--light-grey);
+}
+
+.discussion form {
+  display: flex;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 100px 150px 100px 50px;
+}
+
+.discussion input {
+  flex: 1;
+  border: none;
+  border-radius: 6px;
+  padding: 16px 42px;
+  color: var(--grey-text);
+}
+
+.discussion button {
+  background: var(--green);
+  color: var(--white);
+  border: none;
+  border-radius: 10px;
+  padding: 15px 34px;
+  margin-left: 21px;
+}
+
+
 /* Page d'erreur */
 
 .error {
@@ -969,4 +1134,69 @@ tbody tr:nth-child(even) {
   background-color: var(--green);
   padding: 22px 38px;
   border-radius: 10px;
+}
+
+
+/* Meddia queries pour petits écrans */
+
+@media (max-width: 768px) {
+
+
+  /* Header */
+
+  header {
+    position: relative;
+  }
+
+  .burger-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    opacity: 0;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+  }
+
+  .burger-menu {
+    display: block;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    z-index: 1;
+    font-size: 30px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+  }
+
+  .mainNav .main-menu,
+  .secondaryNav {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+
+  .mainNav .main-menu a,
+  .secondaryNav a {
+    padding: 10px 15px;
+    width: 100%;
+    text-align: left;
+  }
+
+  .burger-toggle:checked ~ .main-menu,
+  .burger-toggle:checked ~ .secondaryNav {
+    display: flex;
+  }
+
+  .mainNav img {
+    max-width: 150px;
+  }
 }

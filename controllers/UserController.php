@@ -88,6 +88,9 @@ class UserController {
         // On connecte l'utilisateur.
         $_SESSION['user'] = $user;
         $_SESSION['userEmail'] = $user->getEmail();
+        $conversations = new MessageManager;
+        $conversationsNumber = count($conversations->getAllConversations($user->getId()));
+        $_SESSION['conversations'] = $conversationsNumber;
 
         // On redirige vers la page du compte de l'utilisateur..
         Utils::redirect("account");

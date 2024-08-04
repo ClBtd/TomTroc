@@ -21,7 +21,7 @@
                 </svg>
                 <p><?=count($userBooks)?> livre(s)</p>
             </div>
-            <a href="index.php?action=sendMessage&userId=<?=$userInfos->getId()?>" class="button">Envoyer un message</a>
+            <a href="index.php?action=messages&userId=<?=$userInfos->getId()?>" class="button">Envoyer un message</a>
         </div>
         <div class="userItem">
             <?php if (!empty($userBooks)) : ?>
