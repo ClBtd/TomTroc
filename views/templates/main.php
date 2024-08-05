@@ -23,16 +23,15 @@
 
 <body>
     <header>
-        <div class='mainNav'>
-            <img src="img/logo-title.png" alt="Logo de TomTroc">
-            <input type="checkbox" id="burger-toggle" class="burger-toggle">
-            <label for="burger-toggle" class="burger-menu">&#9776;</label>
-            <nav class="main-menu">
-                <a href="index.php?action=home" class="<?php echo (empty($_GET['action']) || $_GET['action'] === 'home') ? 'focus' : ''; ?>">Accueil</a>
-                <a href="index.php?action=books" class="<?php echo Utils::focus($_GET['action'] ?? '', 'books'); ?>">Nos livres à l'échange</a>
-            </nav>
-        </div>
-        <nav class='secondaryNav'>
+        <img src="img/logo-title.png" alt="Logo de TomTroc">
+        <input type="checkbox" id="burger-toggle" class="burger-toggle">
+        <label for="burger-toggle" class="burger-menu">&#9776;</label>
+        <div class='nav'>
+        <nav class="main-menu navMenu">
+            <a href="index.php?action=home" class="<?php echo (empty($_GET['action']) || $_GET['action'] === 'home') ? 'focus' : ''; ?>">Accueil</a>
+            <a href="index.php?action=books" class="<?php echo Utils::focus($_GET['action'] ?? '', 'books'); ?>">Nos livres à l'échange</a>
+        </nav>
+        <nav class='secondaryNav navMenu'>
             <a href="index.php?action=messages" class="<?php echo Utils::focus($_GET['action'] ?? '', 'messages'); ?>">
                 <svg width="15" height="14" viewBox="0 0 15 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M12.5342 10.8594L12.3182 11.0439L12.4441 11.2822V12.7332L11.1804 12.0036L11.0119 11.8558L10.8037 11.9494C9.81713 12.3931 8.6938 12.645 7.5 12.645C3.50458 12.645 0.355 9.84779 0.355 6.5C0.355 3.15221 3.50458 0.355 7.5 0.355C11.4954 0.355 14.645 3.15221 14.645 6.5C14.645 8.19467 13.8458 9.73885 12.5342 10.8594ZM11.1765 12.0014C11.1765 12.0014 11.1766 12.0014 11.1766 12.0014L11.1765 12.0014L11.1765 12.0014Z" stroke="#292929" stroke-width="0.71"/>
@@ -57,6 +56,7 @@
                 <a href="index.php?action=connectionForm" class="<?php echo Utils::focus($_GET['action'] ?? '', 'connectionForm'); ?>">Connexion</a>
             <?php endif; ?>
         </nav> 
+        </div>
     </header>
 
     <main>    

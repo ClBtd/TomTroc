@@ -13,7 +13,7 @@
         <h4>par <?=$book->getAuthor()?></h4>
         <p id="line1"></p>
         <h5>DESCRIPTION</h5>
-        <p class="description"><?=$book->getDescription()?></p>
+        <p class="book-description"><?=$book->getDescription()?></p>
         <h5>PROPRIETAIRE</h5>
         <div class="owner">
         <?php if ($book->getUserPicture()): ?>
