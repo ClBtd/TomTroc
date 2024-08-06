@@ -43,7 +43,7 @@
                     <tbody>
                         <?php foreach ($userBooks as $book) : ?>
                             <tr class="userBook">
-                                <td>
+                                <td class="cover">
                                     <?php if ($book->getCover()) :?>
                                         <img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>" width="78" class="cover">
                                     <?php else : ?>

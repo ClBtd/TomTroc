@@ -74,7 +74,6 @@ header img {
   font-size: 1.5em;
 }
 
-
 .secondaryNav {
   display: flex;
   align-items: center;
@@ -602,8 +601,7 @@ h3 {
   border-radius: 10px;
 }
 
-
-/* Page de connexion et d'inscription */
+/* Pages de connexion et d'inscription */
 
 .connection {
   display: flex;
@@ -752,7 +750,7 @@ h3 {
 }
 
 .userInfos input {
-  width: 322px;
+  width: 100%;
   height: 50px;
   background-color: var(--light-grey);
   border: 1px solid #F0F0F0;
@@ -1119,7 +1117,6 @@ aside h3 {
   margin-left: 21px;
 }
 
-
 /* Page d'erreur */
 
 .error {
@@ -1142,7 +1139,6 @@ aside h3 {
 /* Meddia queries pour mobiles */
 
 @media (max-width: 600px) {
-
 
   /* Header */
 
@@ -1188,34 +1184,34 @@ aside h3 {
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.navMenu {
-    width: 100%;
-}
+  .navMenu {
+      width: 100%;
+  }
 
-.burger-toggle:checked ~ .nav {
+  .burger-toggle:checked ~ .nav {
     display: flex;
-}
+  }
 
-.main-menu {
+  .main-menu {
     order: 1;
     flex-direction: column;
-}
+  }
 
-.secondaryNav {
+  .secondaryNav {
     order: 2;
     flex-direction: column;
     padding-left: 25px;
-}
+  }
 
-header a {
+  header a {
     padding: 10px 15px;
     width: 100%;
     text-align: left;
-}
+  }
 
-.secondaryNav a {
-  justify-content: flex-start;
-}
+  .secondaryNav a {
+    justify-content: flex-start;
+  }
 
   header img {
     margin-left: 0;
@@ -1306,6 +1302,215 @@ header a {
   .signature svg {
     margin: auto;
     padding: 50px 0;
+  }
+
+  /* Books page */
+
+  .book-page {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .show-books {
+    padding: 0;
+  }
+
+  /* Book detail */
+
+  .breadcrumb {
+    display: none;
+  }
+
+  .book-detail {
+    flex-direction: column;
+  }
+
+  .book-detail img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  .infos {
+    width: 100%;
+  }
+
+  .infos h2, .infos h5 {
+    padding: 40px 20px 20px 20px;
+  }
+
+  .infos h4 {
+    padding: 0 20px 40px 20px;
+  }
+
+  .book-description {
+    padding: 0 20px;
+    text-align: left;
+  }
+
+  .owner {
+    margin: 0 20px;
+  }
+
+  .owner img {
+    width: 48px;
+  }
+
+  .infos .link-button {
+    margin: 40px 20px;
+  }
+
+  /* Page de connexion */
+
+  .connection {
+    flex-direction: column;
+  }
+
+  .connectionForm {
+    width: 100%;
+    padding: 78px 20px;
+  }
+
+  .connection img {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  /* Page de compte utilisateur */
+
+  .userPage {
+    padding: 78px 0 62px 0;
+    width: 100%;
+  }
+
+  .userPage h3 {
+    margin: 20px;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
+  .userInfos {
+    margin: 0 20px 20px 20px;
+  }
+
+  .userInfos img {
+    margin: 48px 100px;
+  }
+
+  #line2 {
+    margin-left: 100px;
+  }
+
+  .userInfos h3, .userInfos form {
+    margin: 32px;
+  }
+
+  .userInfos input {
+    width: 80%;
+  }
+
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  thead {
+    display: none;
+  }
+
+  table {
+    background-color: var(--beige);
+    border: none;
+  }
+
+  tr {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    background-color: var(--white);
+    border: 1px solid var(--clear-grey);
+    border-radius: 20px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  
+  td {
+    border: none;
+    padding: 0;
+  }
+  
+  /* Image */
+  td:first-child {
+    width: 79px;
+    margin-right: 20px;
+  }
+  
+  .cover {
+    width: 79px;
+    height: 79px;
+    object-fit: cover;
+  }
+  
+  /* Titre */
+  td:nth-child(2) {
+    width: calc(100% - 99px);
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+  }
+  
+  /* Auteur */
+  td:nth-child(3) {
+    width: calc(100% - 99px);
+    font-style: italic;
+  }
+  
+  /* Description */
+  td:nth-child(4) {
+    width: 100%;
+    margin-top: 15px;
+  }
+  
+  .short-description {
+    width: 100%;
+    padding: 0;
+    height: auto;
+    overflow: visible;
+    -webkit-line-clamp: unset;
+  }
+  
+  /* Disponibilité */
+  td:nth-child(5) {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
+  
+  .dispo {
+    display: inline-block;
+    font-size: 0.8em;
+    padding: 5px 10px;
+    border-radius: 15px;
+  }
+  
+  /* Liens */
+  td:last-child {
+    width: 100%;
+    text-align: left;
+    margin-top: 15px;
+  }
+  
+  .links a {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-right: 10px;
+    text-decoration: underline;
+  }
+
+  .userPage .link-button {
+    margin: 0 20px;
+    padding: 20px;
+    width: 80%
   }
 
 }
