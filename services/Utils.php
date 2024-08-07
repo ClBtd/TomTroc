@@ -18,6 +18,13 @@ class Utils {
         return $dateFormatter->format($date);
     }
 
+    public static function convertDateToHour(DateTime $date) : string
+    {
+        $dateFormatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
+        $dateFormatter->setPattern('H:mm');
+        return $dateFormatter->format($date);
+    }
+
     /**
      * Cette méthode permet de récupérer une variable de la superglobale $_REQUEST.
      * Si cette variable n'est pas définie, on retourne la valeur null (par défaut)

@@ -224,7 +224,7 @@ h3 {
 
 .bookForm {
   width: 100%;
-  padding: 40px 50px 92px 150px;
+  padding: 40px 50px 92px 50px;
   background-color: var(--beige);
 }
 
@@ -260,12 +260,11 @@ h3 {
 }
 
 .bookForm img {
-  height: 488px;
-  object-fit: cover;
+  width: 100%;
   margin: 10px 0 23px 0;
 }
 
-.bookForm a {
+.bookForm .container a {
   text-align: right;
   color: var(--black);
   font-size: 0.75em;
@@ -293,6 +292,7 @@ h3 {
 }
 
 .bookInfos textarea {
+  width: 90%;
   height: 250px;
   padding-top: 16px;
   padding-right: 12px;
@@ -1421,12 +1421,14 @@ aside h3 {
   table {
     background-color: var(--beige);
     border: none;
+    width: 100%;
   }
 
   tr {
     display: flex;
     flex-wrap: wrap;
     padding: 20px;
+    margin: 0 20px;
     background-color: var(--white);
     border: 1px solid var(--clear-grey);
     border-radius: 20px;
@@ -1439,78 +1441,154 @@ aside h3 {
     padding: 0;
   }
   
-  /* Image */
-  td:first-child {
-    width: 79px;
+  td:nth-child(1) {
+    width: 78px;
     margin-right: 20px;
   }
   
   .cover {
-    width: 79px;
-    height: 79px;
+    width: 78px;
+    height: 78px;
     object-fit: cover;
   }
   
-  /* Titre */
   td:nth-child(2) {
-    width: calc(100% - 99px);
-    font-weight: bold;
-    font-size: 1.2em;
-    margin-bottom: 5px;
+    position: absolute;
+    top: 45px;
+    left: 180px;
   }
   
-  /* Auteur */
   td:nth-child(3) {
-    width: calc(100% - 99px);
-    font-style: italic;
+    position: absolute;
+    top: 60px;
+    left: 180px;
   }
   
-  /* Description */
   td:nth-child(4) {
     width: 100%;
     margin-top: 15px;
-  }
-  
-  .short-description {
-    width: 100%;
-    padding: 0;
-    height: auto;
-    overflow: visible;
-    -webkit-line-clamp: unset;
-  }
-  
-  /* Disponibilité */
-  td:nth-child(5) {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-  }
-  
-  .dispo {
-    display: inline-block;
-    font-size: 0.8em;
-    padding: 5px 10px;
-    border-radius: 15px;
-  }
-  
-  /* Liens */
-  td:last-child {
-    width: 100%;
-    text-align: left;
-    margin-top: 15px;
-  }
-  
-  .links a {
-    display: inline-block;
-    padding: 5px 10px;
-    margin-right: 10px;
-    text-decoration: underline;
+    padding: 0 55px;
   }
 
+  td:nth-child(5) {
+    position: absolute;
+    top: 100px;
+    left: 180px;
+  }
+
+  .td-links {
+    width: 100%;
+  }
+
+  .links {
+    justify-content: space-between;
+    font-size: 1em;
+    padding: 50px 55px;
+  }
+  
   .userPage .link-button {
     margin: 0 20px;
     padding: 20px;
     width: 80%
+  }
+
+  /* Page de profil utilisateur */
+
+  .userProfil {
+    margin: 0;
+  }
+
+  .userContainer {
+    flex-direction: column;
+  }
+
+  .userItem {
+    margin: 33px 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .userBooks {
+    background-color: var(--beige);
+  }
+
+  .userItem tr {
+    padding: 37px 0;
+  }
+
+  .userBooks .cover {
+    margin: 0 0 26px 66px;
+  }
+
+  /* Page de modification d'article */
+
+  .bookForm {
+    padding: 50px 20px;
+  }
+
+  .bookForm .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .bookForm img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .bookForm .bookInfos {
+    padding: 20px 20px 0 0;
+  }
+
+  /* Page de chargement d'image */
+
+  .loadPicture {
+    padding: 100px 20px;  
+  }
+
+  /* Page de messagerie */
+
+  .write aside {
+    display: none;
+  }
+
+  .conversations .discussion {
+    display: none;
+  }
+
+  .discussion {
+    width: 100%;
+  }
+
+  aside {
+    width: 100%;
+  }
+
+  .current {
+    background-color: var(--beige);
+  }
+
+  .conversation {
+    border-bottom: 1px solid var(--white);
+  }
+
+  .senderMessage {
+    margin: 38px 94px 0px 20px;
+  }
+
+  .userMessage {
+    margin: 38px 20px 0px 94px;
+  }
+
+  .messagesContent button {
+    margin: 20px 0 0 0;
+  }
+
+  .messagesContent form {
+    display: flex;
+    flex-direction: column;
   }
 
 }

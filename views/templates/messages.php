@@ -1,4 +1,4 @@
-<div class="messages">
+<div class="messages <?= (isset($_GET['userId'])) ? 'write' : 'conversations' ?>">
     <?php if (!$infos) : ?>
         <p class = "bannerSuccess">Vous n'avez aucun message à afficher pour l'instant.</p>
     <?php else : ?>
@@ -22,7 +22,7 @@
                         <div class="conversationContent">
                             <div class="conversationInfos">
                                 <h4><?=$conversation->getSenderLogin()?></h4>
-                                <time><?=Utils::convertDateToFrenchFormat($conversation->getDate())?></time>
+                                <time><?=Utils::convertDateToHour($conversation->getDate())?></time>
                             </div>
                             <p><?=$conversation->getContent()?></p>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="conversationContent">
                             <div class="conversationInfos">
                                 <h4><?=$conversation->getUserLogin()?></h4>
-                                <time><?=Utils::convertDateToFrenchFormat($conversation->getDate())?></time>
+                                <time><?=Utils::convertDateToHour($conversation->getDate())?></time>
                             </div>
                             <p><?=$conversation->getContent()?></p>
                         </div>
@@ -47,7 +47,6 @@
                 <?php endif; 
             endforeach; 
         endif;?>
-
     </aside>
     <div class="discussion">
         <div class="discussionInfos">

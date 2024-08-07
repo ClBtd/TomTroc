@@ -5,7 +5,7 @@
         <div class="item">
             <h4>Photo</h4>
             <?php if ($book->getCover()) :?>
-                <img src="img/covers/<?=$book->getCover();?>" alt="Couverture du livre <?=$book->getTitle();?>" width="488">
+                <img src="img/covers/<?=$book->getCover();?>" alt="Couverture du livre <?=$book->getTitle();?>">
             <?php else :?> 
                 <img src="img/covers/default.png" alt="Ce livre n'a pas de couverture enregistrée.">
             <?php endif;?>    

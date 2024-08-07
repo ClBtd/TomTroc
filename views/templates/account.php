@@ -117,7 +117,7 @@
                                 <div class="dispo no">non dispo.</div>
                             </td>
                         <?php endif; ?>
-                        <td>
+                        <td class="td-links">
                             <div class="links">
                                 <a href="index.php?action=bookForm&id=<?=$book->getId()?>">Editer</a>
                                 <a href="index.php?action=deleteBook&id=<?=$book->getId()?>" class="delete">Supprimer</a>

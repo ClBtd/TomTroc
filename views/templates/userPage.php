@@ -23,7 +23,7 @@
             </div>
             <a href="index.php?action=messages&userId=<?=$userInfos->getId()?>" class="button">Envoyer un message</a>
         </div>
-        <div class="userItem">
+        <div class="userItem userBooks">
             <?php if (!empty($userBooks)) : ?>
                 <table>
                     <thead>
@@ -43,7 +43,7 @@
                     <tbody>
                         <?php foreach ($userBooks as $book) : ?>
                             <tr class="userBook">
-                                <td class="cover">
+                                <td>
                                     <?php if ($book->getCover()) :?>
                                         <img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>" width="78" class="cover">
                                     <?php else : ?>
