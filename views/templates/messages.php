@@ -38,7 +38,7 @@
                         <div class="conversationContent">
                             <div class="conversationInfos">
                                 <h4><?=$conversation->getSenderLogin()?></h4>
-                                <time><?=Utils::convertDateToHour($conversation->getDate())?></time>
+                                <span class="date_hour"><?=Utils::convertDateToHour($conversation->getDate())?></span>
                             </div>
                             <p><?=$conversation->getContent()?></p>
                         </div>
@@ -55,7 +55,7 @@
                         <div class="conversationContent">
                             <div class="conversationInfos">
                                 <h4><?=$conversation->getUserLogin()?></h4>
-                                <time><?=Utils::convertDateToHour($conversation->getDate())?></time>
+                                <span class="date_hour"><?=Utils::convertDateToHour($conversation->getDate())?></span>
                             </div>
                             <p><?=$conversation->getContent()?></p>
                         </div>
@@ -88,13 +88,13 @@
                             <?php else : ?>
                                 <img src="img/users/default.png" alt="Pas d'image de profil" width="24">
                             <?php endif; ?>
-                            <time class="date_hour"><?=Utils::convertDateToFrenchFormat($message->getDate())?></time>
+                            <span class="date_hour"><?=Utils::convertDateToFrenchFormat($message->getDate())?></span>
                         </div>
                         <p><?=$message->getContent()?></p>
                     </div>
                 <?php else : ?>
                     <div class="userMessage">
-                        <time class="date_hour"><?=Utils::convertDateToFrenchFormat($message->getDate())?></time>
+                        <span class="date_hour"><?=Utils::convertDateToFrenchFormat($message->getDate())?></span>
                         <p><?=$message->getContent()?></p>
                     </div>
                 <?php endif;

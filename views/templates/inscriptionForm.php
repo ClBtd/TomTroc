@@ -23,7 +23,7 @@
             <br>
             <input type="password" name="password" id="password">
             <br>
-            <button type="">S'inscrire</button>            
+            <button type="submit">S'inscrire</button>            
         </form>
 
         <p>

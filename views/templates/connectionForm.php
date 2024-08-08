@@ -21,7 +21,7 @@
             <br>
             <input type="password" name="password" id="password">
             <br>
-            <button type="">Se connecter</button>            
+            <button type="submit">Se connecter</button>            
         </form>
 
         <p>

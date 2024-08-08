@@ -36,8 +36,8 @@
                         <img src="img/covers/default.png" alt="Ce livre n'a pas de couverture enregistrée.">
                     <?php endif;?>
                     <div class="text-card">
-                        <h4><?=$newBook->getTitle()?></h3>
-                        <h5><?=$newBook->getAuthor()?></h4>
+                        <h4><?=$newBook->getTitle()?></h4>
+                        <h5><?=$newBook->getAuthor()?></h5>
                         <p>Vendu par : <?=$newBook->getLogin()?></p>
                     </div>
                 </div>

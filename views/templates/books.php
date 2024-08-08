@@ -39,8 +39,8 @@
                     </div>
                 </div>
                 <div class="text-card">
-                    <h4><?=$book->getTitle()?></h3>
-                    <h5><?=$book->getAuthor()?></h4>
+                    <h4><?=$book->getTitle()?></h4>
+                    <h5><?=$book->getAuthor()?></h5>
                     <p>Vendu par : <?=$book->getLogin()?></p>
                 </div>
             </div>

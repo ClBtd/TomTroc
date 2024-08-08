@@ -6,7 +6,7 @@
 
 <div class="bookForm">
 
-    <a href="index.php?action=account" class="back"><- retour</a>
+    <a href="index.php?action=account" class="back">&lt;- retour</a>
 
     <h2>Modifier les informations</h2>
 
