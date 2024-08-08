@@ -1,3 +1,9 @@
+<?php 
+/*
+ *   Page de chargement d'une image de couverture.
+ */
+?>
+
 <div class="loadPicture">
 
     <h3>Couverture du livre</h3>

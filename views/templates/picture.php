@@ -1,3 +1,9 @@
+<?php 
+/*
+ *   Page de chargement d'une image de profil.
+ */
+?>
+
 <div class="loadPicture">
 
     <h3>Photo de profil</h3>

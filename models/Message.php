@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Entité Message : un message est défini par son id, son contenu, sa date d'envoi, son émetteur et son récepteur.
+ * Entité Message : un message est défini par son id, son contenu, sa date d'envoi, son émetteur et son récepteur. On peut y ajouter les logins et images de profils de l'émetteur et du récepteur.
  */ 
+
 class Message extends AbstractEntity 
 {
     private string $content;

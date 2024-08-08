@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Contrôleur de la partie messages.
+ * Contrôleur relatif aux messages.
  */
  
 class MessageController {
@@ -18,20 +18,21 @@ class MessageController {
     }
 
     /**
-     * Affiche la page d'administration.
+     * Affiche la page de messagerie.
      * @return void
      */
     public function showMessages() : void
     {
-        // On vérifie que l'utilisateur est connecté et on récupère son Id.
+        // On vérifie que l'utilisateur est connecté et on récupère son ID.
         Utils::checkIfUserIsConnected();
         $user = new UserManager;
         $userInfos = $user->getUserByEmail($_SESSION['userEmail']);
         $userId = $userInfos->getId();
 
+        //On récupère toutes les conversations de l'utilisateur.
         $conversations = $this->messageManager->getAllConversations($userId);
 
-        //On récupère l'id du correspondant choisi ou du plus récent et ses informations ainsi que les messages reçus et envoyés à  cet utilisateur..
+        //On récupère l'id du correspondant choisi (ou du plus récent) et ses informations ainsi que les messages reçus et envoyés à  cet utilisateur.
         if (isset($_GET['userId'])) {
             $senderId = (int)htmlspecialchars($_GET['userId']);
             if ($senderId === $userId) {
@@ -70,11 +71,14 @@ class MessageController {
             $messages = null;
         }
         
-        // On affiche la page de conversation.
         $view = new View("Messagerie");
         $view->render("messages", ['conversations'=>$conversations, 'messages'=>$messages, 'infos'=>$infos]);
     }
 
+    /**
+     * Ajout d'un message.
+     * @return void
+     */
     public function sendMessage() : void {
 
         // On récupère les données du formulaire.
@@ -94,7 +98,7 @@ class MessageController {
             'content' => $content,
         ]);
 
-        //On ajoute le nouveau livre.
+        //On ajoute le nouveau message.
         $result = $this->messageManager->sendMessage($message);
 
         // On vérifie que l'ajout a bien fonctionné.
@@ -102,7 +106,7 @@ class MessageController {
             throw new Exception("Une erreur est survenue lors de l'envoi du message.");
         }
 
-        // On redirige vers la page de connexion.
+        // On redirige vers la page de messagerie.
         Utils::redirect("messages", ["senderId"=>$userId]);
     } 
 

@@ -1,6 +1,15 @@
+<?php 
+/*
+ *   Formulaire d'ajout d'un livre.
+ */
+?>
+
 <div class="bookForm">
+
     <a href="index.php?action=account" class="back"><- retour</a>
+
     <h2>Ajouter les informations</h2>
+
     <form action="index.php?action=addBook" method="post" class="bookInfos">
         <label for="title">Titre</label>
         <br>
@@ -23,5 +32,6 @@
         <br>
         <button type="submit">Valider</button>
     </form>
+    
 </div>
 

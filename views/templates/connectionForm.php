@@ -1,3 +1,9 @@
+<?php 
+/*
+ *   Page de connexion.
+ */
+?>
+
 <div class="connection">
     <div class="connectionForm">
         <h2>Connexion</h2>
@@ -17,10 +23,14 @@
             <br>
             <button type="">Se connecter</button>            
         </form>
+
         <p>
             Pas de compte ?
             <a href="index.php?action=inscriptionForm">Inscrivez-vous</a>
         </p>
+        
     </div>
+
     <img src="img/library2.png" alt="Image d'une librairie">
+    
 </div>

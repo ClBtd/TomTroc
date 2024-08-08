@@ -1,7 +1,23 @@
+<?php 
+/*
+ *   Page de messagerie.
+ */
+?>
+
 <div class="messages <?= (isset($_GET['userId'])) ? 'write' : 'conversations' ?>">
+
+    <?php
+        /* Affichage en cas d'absence de messages. */
+    ?>
+
     <?php if (!$infos) : ?>
         <p class = "bannerSuccess">Vous n'avez aucun message à afficher pour l'instant.</p>
     <?php else : ?>
+
+    <?php
+        /* Affichage de toutes les conversations en cours, avec le dernier message reçu. */
+    ?>
+
     <aside>
         <h3>Messagerie</h3>
         <?php if (empty($conversations)) : ?>
@@ -48,6 +64,11 @@
             endforeach; 
         endif;?>
     </aside>
+
+    <?php
+    /* Affichage de la discussion avec l'utilisateur choisi ou de la dernière discussion en cours. */
+    ?>
+
     <div class="discussion">
         <div class="discussionInfos">
             <?php if ($infos['senderPicture']) : ?>
@@ -86,5 +107,7 @@
             </form>
         </div>
     </div>
+    
     <?php endif; ?>
+
 </div>

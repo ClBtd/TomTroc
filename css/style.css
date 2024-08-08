@@ -674,6 +674,7 @@ h3 {
 }
 
 .userInfos {
+  width: 50%;
   background-color: var(--white);
   border-radius: 20px;
   text-align: center;

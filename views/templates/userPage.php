@@ -1,5 +1,17 @@
+<?php 
+/*
+ *   Profil d'un autre utilisateur.
+ */
+?>
+
 <div class="userProfil">
+
     <div class="userContainer">
+
+        <?php
+        /* Informations sur l'utilisateur. */    
+        ?>
+
         <div class="userItem">
             <?php if ($userInfos->getPicture()) : ?>
                 <img src="img/users/<?=$userInfos->getPicture()?>" alt="Image de profil" width="135">
@@ -23,6 +35,11 @@
             </div>
             <a href="index.php?action=messages&userId=<?=$userInfos->getId()?>" class="button">Envoyer un message</a>
         </div>
+
+        <?php
+        /* Livres de l'utilisateur. */    
+        ?>
+
         <div class="userItem userBooks">
             <?php if (!empty($userBooks)) : ?>
                 <table>
@@ -60,5 +77,7 @@
                 </table>
             <?php endif; ?>
         </div>
+
     </div>
+    
 </div>

@@ -4,6 +4,7 @@
  * Classe singleton qui permet de se connecter à la base de données.
  * Pour récupérer une instance de cette classe, il faut utiliser la méthode getInstance().
  */
+
 class DBManager 
 {
     // Création d'une classe singleton qui permet de se connecter à la base de données.

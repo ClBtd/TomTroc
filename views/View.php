@@ -1,15 +1,14 @@
 <?php 
+
 /**
- * Cette classe génère les vues en fonction de ce que chaque contrôlleur lui passe en paramètre. 
+ * Cette classe génère les vues en fonction de ce que chaque contrôleur lui passe en paramètre. 
  */
+
 class View 
 {
-    /**
-     * Le titre de la page.
-     */
+    
     private string $title;
-    
-    
+        
     /**
      * Constructeur. 
      */
@@ -20,8 +19,8 @@ class View
     
     /**
      * Cette méthode retourne une page complète. 
-     * @param string $viewPath : le chemin de la vue demandée par le controlleur. 
-     * @param array $params : les paramètres que le controlleur a envoyé à la vue.
+     * @param string $viewPath : le chemin de la vue demandée par le controleur. 
+     * @param array $params : les paramètres que le controleur a envoyé à la vue.
      * @return string
      */
     public function render(string $viewName, array $params = []) : void 
@@ -38,9 +37,9 @@ class View
     }
     
     /**
-     * Coeur de la classe, c'est ici qu'est généré ce que le controlleur a demandé. 
-     * @param $viewPath : le chemin de la vue demandée par le controlleur.
-     * @param array $params : les paramètres que le controlleur a envoyés à la vue.
+     * Coeur de la classe, c'est ici qu'est généré ce que le controleur a demandé. 
+     * @param $viewPath : le chemin de la vue demandée par le controleur.
+     * @param array $params : les paramètres que le controleur a envoyés à la vue.
      * @throws Exception : si la vue n'existe pas.
      * @return string : le contenu de la vue.
      */

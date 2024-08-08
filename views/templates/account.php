@@ -1,6 +1,16 @@
+<?php 
+/*
+ *   Page de gestion du compte de l'utilisateur.
+ */
+?>
+
 <div class='userPage'>
 
     <h3>Mon compte</h3>
+
+    <?php 
+        /* Affichage des bannières de succès de modifictaions d'informations. */
+    ?>
 
     <?php if (isset($_GET["success"])) : 
         switch($_GET["success"]) :
@@ -25,6 +35,11 @@
     endif; ?>
 
     <div class="container">
+
+    <?php 
+        /* Affichage des informations générales de l'utilisateur et gestion de l'image de profil. */
+    ?>
+
         <div class="userInfos">
             <?php if ($userInfos->getPicture()): ?>
                 <img src="img/users/<?=$userInfos->getPicture()?>" alt="Image de profil de <?=$userInfos->getLogin()?>" width='135'>
@@ -52,6 +67,10 @@
             </div>
         </div>
 
+        <?php 
+        /* Formulaire de modification des informations de l'utilisateur. */
+        ?>
+
         <div class="userInfos">
             <h3>Vos informations personnelles</h3>
             <form action="index.php?action=updateUser" method="post">
@@ -72,6 +91,10 @@
             </form>
         </div>
     </div>
+
+    <?php 
+        /* Affichage du tableau récapitulatif et de gestion des livres de l'utilisateur. */
+    ?>
 
     <?php if (!empty($userBooks)) : ?>
         <table>
@@ -128,6 +151,10 @@
             </tbody>
         </table>
     <?php endif; ?>
+
+    <?php 
+        /* Lien vers la page d'ajout de livre. */
+    ?>
 
     <a href="index.php?action=bookAddForm" class="link-button">Ajouter un livre</a>
 

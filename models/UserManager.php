@@ -1,7 +1,7 @@
 <?php
 
 /** 
- * Classe UserManager pour gérer les requêtes liées aux users et à l'authentification.
+ * Manager des méthodes relatives aux utilisateurs.
  */
 
 class UserManager extends AbstractEntityManager 
@@ -55,7 +55,7 @@ class UserManager extends AbstractEntityManager
     }
 
     /**
-     * Ajouter un nouvel utilisateur.
+     * Ajoute un nouvel utilisateur.
      * @param User $user
      * @return bool
      */
@@ -74,23 +74,7 @@ class UserManager extends AbstractEntityManager
     }
 
     /**
-     * Récupérer les infos d'un utilisateur.
-     * @param string $email
-     * @return User
-     */
-    public function getUserInfos(string $email) : ?User 
-    {
-        $sql = "SELECT * FROM Users WHERE email = :email";
-        $result = $this->db->query($sql, ['email' => $email]);
-        $user = $result->fetch();
-        if ($user) {
-            return $userInfos = new User($user);
-        }
-        return null;
-    }
-
-    /**
-     * Charger la photo de profil.
+     * Charge l'image de profil, supprime l'ancienne et modifie la base de donnée si besoin.
      * @param string $picture_path $filename
      * @return bool $result
      */
@@ -123,7 +107,7 @@ class UserManager extends AbstractEntityManager
     }
     
     /**
-     * Modifier les données d'un utilisateur.
+     * Modifie les données d'un utilisateur.
      * @param string $login $email $id
      * @return bool
      */

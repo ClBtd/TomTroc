@@ -1,16 +1,21 @@
  <?php
 
+/**
+ * Entité Book : un livre est défini par son id, sa disponibilité, son titre, son auteur, éventuellement son image de couverture, sa description, l'id de son possesseur, son login et son image de profil et éventuellement son image de profil.
+ */
+
  class Book extends AbstractEntity 
  {
+
     protected int $id;
-    private int $id_user;
     private int $disponibility;
-    private string $login;
     private string $title;
     private string $author;
     private ?string $cover;
     private string $description;
-    private string $user_picture;
+    private int $id_user;
+    private string $login;
+    private ?string $user_picture;
 
 
     /**

@@ -1,7 +1,11 @@
+<?php 
+/**
+ * Page d'accueil du site
+ */
+?>
+
 <?php
-    /**
-     * Présentation du site. 
-     */
+    /* Présentation du site. */
 ?>
 
 <div class="presentation">
@@ -17,9 +21,7 @@
 </div>
 
 <?php
-    /**
-    * Affichage des 4 derniers livres ajoutés disponibles à l'échange. 
-    */
+    /* Affichage des 4 derniers livres ajoutés disponibles à l'échange. */
 ?>
 
 <div class="last-books">
@@ -46,9 +48,7 @@
 </div>
 
 <?php
-    /**
-     * Description du fonctionnement du site. 
-     */
+    /* Description du fonctionnement du site. */
 ?>
 
 <div class="description">
@@ -68,9 +68,7 @@
 </div>
 
 <?php
-    /**
-     * Présentation des valeurs de l'équipe. 
-     */
+    /* Présentation des valeurs de l'équipe. */
 ?>
 
 <div class="values">

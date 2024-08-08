@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Entité User : un user est défini par son id, un nom d'utilisateur, un mail et un password.
+ * Entité User : un user est défini par son id, un nom d'utilisateur, un mail, un password, une date d'inscription et éventuellement une image de profil.
  */ 
 class User extends AbstractEntity 
 {

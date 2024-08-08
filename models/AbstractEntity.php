@@ -33,24 +33,4 @@ abstract class AbstractEntity
             }
         }
     }
-
-    /** 
-     * Setter pour l'id.
-     * @param int $id
-     * @return void
-     */
-    public function setId(int $id) : void 
-    {
-        $this->id = $id;
-    }
-
-    
-    /**
-     * Getter pour l'id.
-     * @return int
-     */
-    public function getId() : int 
-    {
-        return $this->id;
-    }
 }

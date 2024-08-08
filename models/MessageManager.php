@@ -1,11 +1,13 @@
 <?php
+
 /**
- * Classe qui gère les messages.
+ * Manager des méthodes relatives aux messages.
  */
+
 class MessageManager extends AbstractEntityManager
 {
     /**
-     * Récupère le dernier message reçu.
+     * Récupère le dernier message reçu de chaque conversation de l'utilisateur.
      * @return array : un tableau d'objet Message.
      */
     public function getAllConversations($userId) : array
@@ -43,7 +45,7 @@ class MessageManager extends AbstractEntityManager
     }
 
     /**
-     * Récupère les messages envoyés par un utilisateur via son ID.
+     * Récupère tout les messages d'une conversation avec un utilisateur via son ID.
      * @return array : un tableau d'objets Message.
      */
     public function getMessagesRecieved(int $userId, int $senderId) : array
@@ -62,7 +64,7 @@ class MessageManager extends AbstractEntityManager
     }
 
     /**
-     * Ajouter un nouveau message.
+     * Ajoute un nouveau message.
      * @param Message $message
      * @return bool
      */

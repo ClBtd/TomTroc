@@ -1,8 +1,9 @@
 <?php
 
 /**
- * Classe qui gère les livres.
+ * Manager des méthodes relatives aux livres.
  */
+
 class BookManager extends AbstractEntityManager
 {
     /**
@@ -70,7 +71,7 @@ class BookManager extends AbstractEntityManager
 
     /**
      * Récupère les informations du livre via son ID.
-     * @return Book : un objets Book.
+     * @return Book : un objet Book.
      */
     public function getBookById(int $bookId) : ?Book
     {
@@ -109,7 +110,7 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Modifier les données d'un livre.
+     * Modifie les données d'un livre.
      * @param Book $book
      * @return bool $result
      */
@@ -130,7 +131,7 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Supprime un livre.
+     * Supprime un livre et l'image de couverture qui va avec.
      * @return bool $result
      */
     public function deleteBook(int $id, string $cover) : bool
@@ -146,7 +147,7 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Ajouter un nouveau livre.
+     * Ajoute un nouveau livre.
      * @param Book $book
      * @return bool
      */
@@ -166,23 +167,7 @@ class BookManager extends AbstractEntityManager
     }
 
     /**
-     * Récupérer les infos d'un utilisateur.
-     * @param string $email
-     * @return User
-     */
-    public function getUserInfos(string $email) : ?User 
-    {
-        $sql = "SELECT * FROM Users WHERE email = :email";
-        $result = $this->db->query($sql, ['email' => $email]);
-        $user = $result->fetch();
-        if ($user) {
-            return $userInfos = new User($user);
-        }
-        return null;
-    }
-
-    /**
-     * Charger la couverture d'un livre.
+     * Charge la couverture d'un livre (et supprime l'ancienne si besoin) et l'ajoute à la base de donnée si besoin.
      * @param string $coverPath $filename
      * @return bool $result
      */
@@ -213,5 +198,4 @@ class BookManager extends AbstractEntityManager
             return $result = true; 
         }
     }
-
 }

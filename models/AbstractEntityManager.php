@@ -3,6 +3,7 @@
 /**
  * Classe abstraite qui représente un manager. Elle récupère automatiquement le gestionnaire de base de données. 
  */
+
 abstract class AbstractEntityManager {
     
     protected $db;

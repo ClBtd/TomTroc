@@ -4,10 +4,11 @@
 * Classe utilitaire : cette classe ne contient que des méthodes statiques qui peuvent être appelées
 * directement sans avoir besoin d'instancier un objet Utils.
 */
+
 class Utils {
 
     /**
-     * Convertit une date vers le format de type "Samedi 15 juillet 2023" en francais.
+     * Convertit une date et une heure vers le format de type "15.07 12:34".
      * @param DateTime $date : la date à convertir.
      * @return string : la date convertie.
      */
@@ -18,6 +19,11 @@ class Utils {
         return $dateFormatter->format($date);
     }
 
+    /**
+     * Convertit une heure vers le format de type "14:56".
+     * @param DateTime $date : l'heure à convertir.
+     * @return string : l'heure convertie.
+     */
     public static function convertDateToHour(DateTime $date) : string
     {
         $dateFormatter = new IntlDateFormatter('fr_FR', IntlDateFormatter::FULL, IntlDateFormatter::FULL);
@@ -66,7 +72,11 @@ class Utils {
         }
     }
 
-    public static function focus(string $page, $action = '') 
+    /**
+     * Attribue la classe focus à la page en cours dans le menu du header.
+     * @return string
+     */
+    public static function focus(string $page, $action = '') : string
     {
         return $page === $action ? 'focus' : '';
     }
@@ -81,18 +91,22 @@ class Utils {
         return $interval->y;
     }
 
-    public static function sanitizeFilename($username) {
+    /**
+     * Transforme le nom de l'utilisateur ou du livre en nom utilisable pour le fichier image.
+     * @return string
+     */
+    public static function sanitizeFilename($name) {
 
         // Supprime les apostrophes et autres caractères spéciaux
-        $username = preg_replace('/[\'"^£$%&*()}{@#~?><>,|=_+¬-]/', '', $username);
+        $username = preg_replace('/[\'"^£$%&*()}{@#~?><>,|=_+¬-]/', '', $name);
 
         // Remplace les espaces par des tirets
-        $username = str_replace(' ', '-', $username);
+        $username = str_replace(' ', '-', $name);
     
         // Convertit en minuscules (optionnel)
-        $username = strtolower($username);
+        $username = strtolower($name);
     
-        return $username;
+        return $name;
     }
     
 

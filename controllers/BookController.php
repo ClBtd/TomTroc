@@ -1,5 +1,7 @@
 <?php
 
+/* Contrôleur relatif aux livres */
+
 class BookController 
 {
     private $bookManager;
@@ -19,59 +21,82 @@ class BookController
      */
     public function showHome() : void
     {
+
+        /*On récupère les derniers livres ajoutés par les utilisateurs et disponibles à l'échange.*/
         $newBooks = $this->bookManager->getNewBooks();     
 
         $view = new View("Accueil");
         $view->render("home",['newBooks' => $newBooks]);
     }
 
+    /**
+     * Affiche la page récapitulative des livres.
+     * @return void
+     */
     public function showBooks() : void
     {
+        /* On récupère tous les livres de la base de donnée. */
         $books = $this->bookManager->getAllBooks();     
 
         $view = new View("Nos livres à l'échange");
         $view->render("books",['books' => $books]);
     }
 
+    /**
+     * Affiche le résultat de la recherche utilisateur.
+     * @return void
+     */
     public function searchBooks() : void
     {
+        /* On récupère le titre entré par l'utilisateur. */
         $searchedBooks = htmlspecialchars($_GET['title']);
 
+        /*On récupère les résultats correspondants dans la base de donnée.*/
         $books = $this->bookManager->getSearchedBooks($searchedBooks);     
 
         $view = new View("Nos livres à l'échange");
         $view->render("books",['books' => $books]);   
     }
 
+    /**
+     * Affiche la page de détail d'un livre via son ID.
+     * @return void
+     */
     public function showBookDetail() : void
     {
+
+        /*On récupère l'id du livre. */
         $bookId = htmlspecialchars($_GET['bookId']);
 
+        /*On récupère les informations sur le livre dans la base de donnée. */
         $book = $this->bookManager->getBookById($bookId);     
 
         $view = new View("Titre du livre");
         $view->render("bookDetail", ['book' => $book]);
     }
 
+    /**
+     * Affiche la page de modification des informations du livre.
+     * @return void
+     */
     public function bookForm() : void
     {
 
-            //On récupère les infos du livre.
-            $book = $this->bookManager->getBookById(htmlspecialchars($_GET['id']));
+        //On récupère les infos du livre dans la base de donnée via son ID.
+        $book = $this->bookManager->getBookById(htmlspecialchars($_GET['id']));
 
-            // Puis on affiche le formulaire pour les livres.
-            $view = new View("Edition du livre");
-            $view->render("bookUpdateForm", ['book' => $book]);
+        $view = new View("Edition du livre");
+        $view->render("bookUpdateForm", ['book' => $book]);
 
     }
 
     /**
-     * Modifiaction des infos du livre.
+     * Modifiaction des infosrmations du livre.
      * @return void
      */
     public function updateBook() : void 
     {
-        // On récupère les données du formulaire.
+        // On récupère les données du formulaire de modification.
         $id = htmlspecialchars(Utils::request("id"));
         $title = htmlspecialchars(Utils::request("title"));
         $author = htmlspecialchars(Utils::request("author"));
@@ -88,7 +113,7 @@ class BookController
             'disponibility' => $disponibility
         ]);
 
-        //On modifie les informations du livre.
+        //On modifie les informations du livre dans la base de donnée.
         $result = $this->bookManager->updateBook($book);
 
         // On vérifie que la modification a bien fonctionné.
@@ -100,6 +125,10 @@ class BookController
         Utils::redirect("account", ["success"=>3]);
     }
 
+    /**
+     * Suppression d'un livre.
+     * @return void
+     */
     public function deleteBook() : void
     {
         //On récupère l'id du livre et le nom du fichier image s'il y en a un.
@@ -117,15 +146,18 @@ class BookController
         Utils::redirect("account", ["success"=>4]);
     }
 
+    /**
+     * Affiche le formulaire d'ajout d'un livre.
+     * @return void
+     */
     public function bookAddForm() : void
     {
-            // On affiche le formulaire pour les livres.
-            $view = new View("Edition du livre");
-            $view->render("bookAddForm");
+       $view = new View("Edition du livre");
+        $view->render("bookAddForm");
     }
 
     /**
-     * Création d'un compte utilisateur.
+     * Ajout d'un livre.
      * @return void
      */
     public function addBook () : void 
@@ -168,7 +200,7 @@ class BookController
     }
 
     /**
-     * Page de chargement d'une image.
+     * Affiche la page de chargement d'une image.
      * @return void
      */
     public function cover() : void 
@@ -176,13 +208,12 @@ class BookController
         // On vérifie que l'utilisateur est connecté.
         Utils::checkIfUserIsConnected();
 
-        // On affiche la page de téléchargement de l'image.
         $view = new View("Image de couverture");
         $view->render("cover");
     }
 
     /**
-     * Page d'ajout d'une image.
+     * Ajout d'une image.
      * @return void
      */
     public function loadCover() : void 

@@ -1,9 +1,11 @@
 <?php
 
+/* Controleur relatif aux utilisateurs */
+
 class UserController {
 
-
     private $userManager;
+
     /**
      * Définition du constructeur
      * @return UserManager
@@ -14,7 +16,7 @@ class UserController {
     }
 
     /**
-     * Affiche la page d'administration.
+     * Affiche la page du compte utilisateur.
      * @return void
      */
     public function showAccount() : void
@@ -23,8 +25,8 @@ class UserController {
         Utils::checkIfUserIsConnected();
         $email = $_SESSION['userEmail'];
 
-        // On récupère les informations de l'utilisateur et ses livres.
-        $userInfos = $this->userManager->getUserInfos($email);
+        // On récupère les informations de l'utilisateur.
+        $userInfos = $this->userManager->getUserByEmail($email);
         if (!$userInfos) {
             throw new Exception("Un problème est survenu lors de l'accès aux informations du compte.");
         }
@@ -33,7 +35,6 @@ class UserController {
         $userBooks = new BookManager;
         $userBooks = $userBooks->getBooksByUser($email);
 
-        // On affiche la page utilisateur.
         $view = new View("Mon compte");
         $view->render("account", ['userInfos' => $userInfos,
         'userBooks' => $userBooks]);
@@ -157,7 +158,7 @@ class UserController {
     }
 
     /**
-     * Page de chargement d'une image.
+     * Affiche la page de chargement d'une image.
      * @return void
      */
     public function picture() : void 
@@ -165,13 +166,12 @@ class UserController {
         // On vérifie que l'utilisateur est connecté.
         Utils::checkIfUserIsConnected();
 
-        // On affiche la page de téléchargement de l'image.
         $view = new View("Image de profil");
         $view->render("picture");
     }
 
     /**
-     * Page d'ajout d'une image.
+     * Ajout ou modification d'une image.
      * @return void
      */
     public function loadPicture() : void 
@@ -245,7 +245,6 @@ class UserController {
             }
         }
         
-
         //On crée un objet utilisateur.
         $user = new User([
             'id' => $id,
@@ -273,12 +272,11 @@ class UserController {
     }
 
     /**
-     * Page des utilisateurs.
+     * Affiche la page d'un autre utilisateur.
      * @return void
      */
     public function showUserPage() : void 
     {
-
         // On récupère l'id de l'utilisateur et ses informations.
         $userInfos = $this->userManager->getUserById(htmlspecialchars($_GET['userId']));
 
@@ -286,12 +284,7 @@ class UserController {
         $userBooks = new BookManager;
         $userBooks = $userBooks->getBooksByUser($userInfos->getEmail());
 
-        // On affiche la page de téléchargement de l'image.
         $view = new View("Profil de l'utilisateur");
         $view->render("userPage", ['userInfos' => $userInfos, 'userBooks' => $userBooks]);
-
     }
-
-    
-
 }

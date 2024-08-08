@@ -1,13 +1,29 @@
+<?php 
+/*
+ *   Page de détail d'un livre.
+ */
+?>
+
 <div class="breadcrumb">
     <p>Nos livres > <?= $book->getTitle()?></p>
 </div>
 
 <div class="book-detail">
+
+    <?php 
+        /* Affichage de la couverture du livre. */
+    ?>
+
     <?php if ($book->getCover()) :?>
         <img src="img/covers/<?=$book->getCover()?>" alt="Couverture du livre <?=$book->getTitle()?>">
     <?php else :?> 
         <img src="img/covers/default.png" alt="Ce livre n'a pas de couverture enregistrée.">
-    <?php endif;?>    
+    <?php endif;?> 
+
+    <?php 
+        /* Affichage des informations du livre. */
+    ?>
+
     <div class="infos">
         <h2><?=$book->getTitle()?></h2>
         <h4>par <?=$book->getAuthor()?></h4>
@@ -25,4 +41,5 @@
         </div>
         <a href="index.php?action=messages&userId=<?=$book->getUserId()?>" class="link-button">Envoyer un message</a>
     </div>
+
 </div>
