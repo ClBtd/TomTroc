@@ -7,7 +7,7 @@
 
 <div class="book-page">
 
-    <h2>Nos livres à l'échange</h2>
+    <h3>Nos livres à l'échange</h3>
 
     <?php 
         /* Formulaire de recherche qui s'active avec la touche entrée */ 
@@ -15,7 +15,8 @@
 
     <form action="index.php" method="get">
         <input type="hidden" name="action" value="search">
-        <input type="text" name="title" placeholder="Rechercher un livre" class="searchfield">
+        <label for="title" hidden>Champs de recherche de livre</label>
+        <input type="text" name="title" id="title" placeholder="Rechercher un livre" class="searchfield">
     </form>
 
 </div>

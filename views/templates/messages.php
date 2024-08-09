@@ -102,6 +102,7 @@
             <form action="index.php?action=sendMessage" method="post">
                 <input type="hidden" name="userId" value="<?=$infos['senderId']?>">
                 <input type="hidden" name="senderId" value="<?=$infos['userId']?>">
+                <label for="message" hidden>Taper votre message</label>
                 <input type="text" name="message" id="message" placeholder="Tapez votre message ici">
                 <button type="submit">Envoyer</button>
             </form>

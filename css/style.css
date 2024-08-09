@@ -278,7 +278,7 @@ font-size: 0.87em;
 font-weight: 400;
 }
 
-.bookForm h2 {
+.bookForm h3 {
 font-size: 1.62em;
 margin: 23px 0;
 }
@@ -562,6 +562,10 @@ padding: 130px 263px 72px 263px;
 background-color: var(--beige);
 }
 
+.book-page h3 {
+  font-size: 2.25em;
+}
+
 .searchfield {
 width: 277px;
 height: 45px;
@@ -625,9 +629,10 @@ width: 50%;
 margin: 0;
 }
 
-.infos h2 {
+.infos h3 {
 margin: 0;
 padding: 59px 0 0 85px;
+font-size: 2.25em;
 }
 
 .infos h4 {
@@ -1011,7 +1016,10 @@ display: flex;
 .userItem {
 background-color: var(--white);
 border-radius: 20px;
-margin-right: 28px;
+}
+
+.userItem:first-of-type {
+  margin-right: 28px;
 }
 
 .userItem img {
@@ -1030,7 +1038,7 @@ height: 0;
 border-top: 1px solid var(--clear-grey);
 }
 
-.userItem h3 {
+.userItem h4 {
 font-family: 'Playfair Display', 'Times New Roman', Times, serif;
 text-align: center;
 font-size: 1.5em;
@@ -1668,6 +1676,10 @@ tr {
   border-radius: 20px;
   margin-bottom: 20px;
   position: relative;
+}
+
+tbody tr:nth-of-type(even) {
+  background-color: var(--white);
 }
 
 td {

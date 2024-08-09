@@ -8,7 +8,7 @@
 
     <a href="index.php?action=account" class="back">&lt;- retour</a>
 
-    <h2>Ajouter les informations</h2>
+    <h3>Ajouter les informations</h3>
 
     <form action="index.php?action=addBook" method="post" class="bookInfos">
         <label for="title">Titre</label>

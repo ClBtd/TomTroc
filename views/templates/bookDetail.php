@@ -25,7 +25,7 @@
     ?>
 
     <div class="infos">
-        <h2><?=$book->getTitle()?></h2>
+        <h3><?=$book->getTitle()?></h3>
         <h4>par <?=$book->getAuthor()?></h4>
         <p id="line1"></p>
         <h5>DESCRIPTION</h5>
